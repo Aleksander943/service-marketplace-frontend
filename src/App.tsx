@@ -1,9 +1,11 @@
-import './App.css'
+import { BrowserRouter } from 'react-router';
+import { AppRoutes } from './routes';
+import './App.css';
 
 export function App() {
-  return (
-    <div className="App">
-      <h1>Welcome to the Frontend!</h1>
-    </div>
-  )
+return (
+<BrowserRouter>
+<AppRoutes />
+</BrowserRouter>
+);
 }
