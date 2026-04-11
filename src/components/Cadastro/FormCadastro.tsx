@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CadastroSchema } from "./schema/schemaSchema";
+import { CadastroSchema } from "./schema/CadastroSchema";
 import { z } from "zod"
 import { useState } from "react";
 
