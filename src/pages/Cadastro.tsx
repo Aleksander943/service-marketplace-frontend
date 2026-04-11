@@ -1,19 +1,27 @@
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardAction,
+Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useState } from "react";
 
 const fieldClass =
   "h-10 w-full rounded-xl border border-zinc-200 bg-white/70 px-3 text-sm outline-none transition focus:border-zinc-900";
 
 export function Cadastro() {
+  const [verificarTipoUser, setVerificarTipoUser] = useState<string>("");
+  const [form, setForm] = useState({
+    nome: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen bg-gray-200">
       <Card className="w-full max-w-sm rounded-2xl border-zinc-200 bg-gradient-to-b from-white to-zinc-50 shadow-xl">
         <CardHeader className="mb-4 border-b border-zinc-200">
           <CardTitle className="text-center text-xl font-semibold tracking-tight">
@@ -38,6 +46,7 @@ export function Cadastro() {
                 type="text"
                 placeholder="Nome"
                 required
+                value = {form.nome}
                 className={fieldClass}
               />
               <input
@@ -45,6 +54,7 @@ export function Cadastro() {
                 type="email"
                 placeholder="E-mail"
                 required
+                value={form.email}
                 className={fieldClass}
               />
               <input
@@ -52,6 +62,7 @@ export function Cadastro() {
                 type="password"
                 placeholder="Senha"
                 required
+                value={form.password}
                 className={fieldClass}
               />
               <input
@@ -59,31 +70,21 @@ export function Cadastro() {
                 type="password"
                 placeholder="Confirmação da Senha"
                 required
+                value={form.confirmPassword}
                 className={fieldClass}
               />
+              <Button
+                type="submit"
+                className="h-10 w-full rounded-xl bg-zinc-900 hover:bg-zinc-800"
+              >
+                Cadastrar-se
+              </Button>
             </div>
           </form>
         </CardContent>
-
-        <CardFooter className="flex-col gap-2">
-          <CardAction>
-            <Button variant="link" className="text-zinc-600">
-              Já tem conta?
-            </Button>
-          </CardAction>
-          <Button
-            type="submit"
-            className="h-10 w-full rounded-xl bg-zinc-900 hover:bg-zinc-800"
-          >
-            Cadastrar-se
-          </Button>
-          <Button
-            variant="outline"
-            className="h-10 w-full rounded-xl border-zinc-300"
-          >
-            Cadastrar com Google
-          </Button>
-        </CardFooter>
+        <Button variant="link" className="text-zinc-600">
+          Já tem conta?
+        </Button>
       </Card>
     </div>
   );
