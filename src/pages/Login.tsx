@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -21,9 +20,6 @@ export function Login() {
         <CardContent>
           <FormLogin />
         </CardContent>
-        <Button variant="link" className="text-zinc-600">
-          Ainda não tem conta ?
-        </Button>
       </Card>
     </div>
   );
