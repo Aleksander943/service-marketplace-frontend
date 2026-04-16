@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CadastroSchema } from "./schema/CadastroSchema";
 import { z } from "zod"
 import { useState } from "react";
+import { Link } from "react-router";
 
 type Cadastrotype = z.infer<typeof CadastroSchema>
 
@@ -107,9 +108,11 @@ export const FormCadastro = () => {
         </div>
       </form>
 
-      <Button variant="link" className="text-zinc-600 ">
+      <Link 
+      to={"/login"}
+      className="text-zinc-600 ">
         Já tem conta?
-      </Button>
+      </Link>
     </div>
   );
 };

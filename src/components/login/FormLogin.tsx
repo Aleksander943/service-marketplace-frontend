@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "./schema/FormLoginSchema";
 import { z } from "zod";
+import { Link } from "react-router";
 
 type LoginTypes = z.infer<typeof LoginSchema>;
 
@@ -63,6 +64,11 @@ export const FormLogin = () => {
           </Button>
         </div>
       </form>
+       <Link 
+        to={"/cadastro"} 
+        className="text-zinc-600">
+          Ainda não tem conta ?
+        </Link>
     </div>
   );
 };
