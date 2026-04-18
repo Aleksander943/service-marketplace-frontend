@@ -1,18 +1,27 @@
 import { Button } from "../ui/button";
+import { ServiceFilter } from "./Filter/serviceFilter";
 import { Search } from "./Search/search";
 
 export function NavBar(){
     return(
-        <div>
-            <div className="flex items-center m-3 px-10 rounded-lg bg-gray-600 text-white">
-                <h1>ServiçosJá</h1>
-                <Search />
-                <Button
-                className=""
-                >
-                    Anunciar Serviço
-                </Button>
+        <header className="w-full px-2 py-2">
+            <div className="rounded-2xl border border-white/10 bg-[#1f1f1f] text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+                <div className="flex items-center gap-3 px-3 py-2">
+                    <h1 className="shrink-0 text-[1.05rem] font-semibold tracking-tight text-white">
+                        <span className="text-white/90">serviços</span>
+                        <span className="text-sky-400">já</span>
+                    </h1>
+                    <div className="min-w-0 flex-1">
+                        <Search />
+                    </div>
+                    <Button className="h-10 shrink-0 rounded-xl border border-white/10 bg-[#2b2b2b] px-5 text-sm font-semibold text-white shadow-none hover:bg-[#353535]">
+                        Anunciar serviço
+                    </Button>
+                </div>
+                <div className="border-t border-white/8 bg-[#232323] ">
+                    <ServiceFilter />
+                </div>
             </div>
-        </div>
+        </header>
     );
 };
