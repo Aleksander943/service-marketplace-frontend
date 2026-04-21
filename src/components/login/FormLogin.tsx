@@ -28,7 +28,7 @@ export const FormLogin = () => {
 
       if (res.ok) {
         alert("logado com sucesso!");
-        navigate("/")
+        navigate("/dashboard");
       } else {
         alert("Erro no servidor: " + resultado.message);
       }
