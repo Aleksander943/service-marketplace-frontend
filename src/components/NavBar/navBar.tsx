@@ -15,10 +15,10 @@ export function NavBar(){
                     <div className="min-w-0 flex-1">
                         <Search />
                     </div>
-                    <Button className="h-10 shrink-0 rounded-xl border border-white/10 bg-[#2b2b2b] px-5 text-sm font-semibold text-white shadow-none hover:bg-[#353535]">
-                        nome do usuario
-                        <AvatarDropdown />
-                    </Button>
+                    <div>
+
+                        <AvatarDropdown  />
+                    </div>
                 </div>
                 <div className="border-t border-white/8 bg-[#232323] ">
                     <ServiceFilter />
