@@ -6,9 +6,9 @@ import { Dashboard } from '@/pages/dashboard';
 export function AppRoutes() {
 return (
 <Routes>
-<Route path="/" element={<Dashboard />} />
+<Route path="/" element={<Login />} />
 <Route path="/cadastro" element={<Cadastro />} />
-<Route path="/login" element={<Login />}/>
+<Route path="/dashboard" element={<Dashboard />}/>
 </Routes>
 );
 }
