@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CadastroSchema } from "./schema/CadastroSchema";
 import { z } from "zod"
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 type Cadastrotype = z.infer<typeof CadastroSchema>
 
@@ -13,6 +13,8 @@ export const FormCadastro = () => {
   const { register, handleSubmit, setValue } = useForm({
     resolver:zodResolver(CadastroSchema),
   });
+
+  const navigate = useNavigate();
 
   const handleSubmitCadastro = async(data: Cadastrotype) =>{    
     try{
@@ -28,6 +30,7 @@ export const FormCadastro = () => {
 
       if(res.ok){
           alert("Cadastrado com sucesso")
+          navigate("/login")
           }else{
             alert("Erro no servidor: " + resultado.message);
           }
