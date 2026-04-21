@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "./schema/FormLoginSchema";
 import { z } from "zod";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 type LoginTypes = z.infer<typeof LoginSchema>;
 
@@ -12,12 +12,14 @@ export const FormLogin = () => {
     resolver: zodResolver(LoginSchema),
   });
 
+  const navigate = useNavigate();
+
   const handleSubmitLogin = async (data: LoginTypes) => {
     try {
       const res = await fetch("http://localhost:8080/login", {
         method: "POST",
         headers: {
-          "content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -26,6 +28,7 @@ export const FormLogin = () => {
 
       if (res.ok) {
         alert("logado com sucesso!");
+        navigate("/")
       } else {
         alert("Erro no servidor: " + resultado.message);
       }
