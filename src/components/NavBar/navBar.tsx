@@ -1,4 +1,5 @@
 import { Button } from "../ui/button";
+import { AvatarDropdown } from "./Dropdown/dropdown";
 import { ServiceFilter } from "./Filter/serviceFilter";
 import { Search } from "./Search/search";
 
@@ -15,7 +16,8 @@ export function NavBar(){
                         <Search />
                     </div>
                     <Button className="h-10 shrink-0 rounded-xl border border-white/10 bg-[#2b2b2b] px-5 text-sm font-semibold text-white shadow-none hover:bg-[#353535]">
-                        Anunciar serviço
+                        nome do usuario
+                        <AvatarDropdown />
                     </Button>
                 </div>
                 <div className="border-t border-white/8 bg-[#232323] ">
