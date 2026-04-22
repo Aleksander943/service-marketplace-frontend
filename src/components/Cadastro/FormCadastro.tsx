@@ -113,7 +113,7 @@ export const FormCadastro = () => {
 
       <Link 
       to={"/login"}
-      className="text-zinc-600 ">
+      className="text-zinc-600 m-t-4 block text-center text-sm mt-4">
         Já tem conta?
       </Link>
     </div>
