@@ -4,11 +4,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "./schema/FormLoginSchema";
 import { z } from "zod";
 import { Link, useNavigate } from "react-router";
+import { BadgeWithSpinner } from "../Loading/Loading";
 
 type LoginTypes = z.infer<typeof LoginSchema>;
 
 export const FormLogin = () => {
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm({
     resolver: zodResolver(LoginSchema),
   });
 
@@ -27,8 +32,7 @@ export const FormLogin = () => {
       const resultado = await res.json();
 
       if (res.ok) {
-        alert("logado com sucesso!");
-        navigate("/dashboard");
+        // navigate("/dashboard");
       } else {
         alert("Erro no servidor: " + resultado.message);
       }
@@ -59,19 +63,25 @@ export const FormLogin = () => {
             className={fieldClass}
             {...register("password")}
           />
-          <Button
-            type="submit"
-            className="h-10 w-full rounded-xl bg-zinc-900 hover:bg-zinc-800"
-          >
-            Fazer login
-          </Button>
+
+          {isSubmitting ? (
+            <div  
+            className="h-10 w-full rounded-xl bg-zinc-900 hover:bg-zinc-800">
+            <BadgeWithSpinner />
+            </div>
+          ) : (
+            <Button
+              type="submit"
+              className="h-10 w-full rounded-xl bg-zinc-900 hover:bg-zinc-800"
+            >
+              Fazer login
+            </Button>
+          )}
         </div>
       </form>
-       <Link 
-        to={"/cadastro"} 
-        className="text-zinc-600">
-          Ainda não tem conta ?
-        </Link>
+      <Link to={"/cadastro"} className="text-zinc-600 m-t-4 block text-center text-sm mt-4">
+        Ainda não tem conta ?
+      </Link>
     </div>
   );
 };
