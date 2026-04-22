@@ -7,7 +7,7 @@ return (
 <Routes>
 <Route path="/" element={<div>Página Inicial</div>} />
 <Route path="/cadastro" element={<Cadastro />} />
-<Route path="/login" element={<Login />}/>
+<Route path="/login" />
 </Routes>
 );
 }
