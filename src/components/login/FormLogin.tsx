@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "./schema/FormLoginSchema";
 import { z } from "zod";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate} from "react-router";
 import { BadgeWithSpinner } from "../Loading/Loading";
 
 type LoginTypes = z.infer<typeof LoginSchema>;
@@ -32,7 +32,7 @@ export const FormLogin = () => {
       const resultado = await res.json();
 
       if (res.ok) {
-        // navigate("/dashboard");
+        navigate("/dashboard");
       } else {
         alert("Erro no servidor: " + resultado.message);
       }
@@ -41,7 +41,7 @@ export const FormLogin = () => {
     }
   };
   const fieldClass =
-    "h-10 w-full rounded-xl border border-zinc-200 bg-white/70 px-3 text-sm outline-none transition focus:border-zinc-900";
+    "h-10 w-full rounded-xl border border-white/12 bg-[#2a2a2a] px-3 text-sm text-white placeholder:text-white/45 outline-none transition focus:border-sky-400";
 
   return (
     <div>
@@ -65,21 +65,21 @@ export const FormLogin = () => {
           />
 
           {isSubmitting ? (
-            <div  
-            className="h-10 w-full rounded-xl bg-zinc-900 hover:bg-zinc-800">
+            <div
+            className="h-10 w-full rounded-xl bg-sky-500/90">
             <BadgeWithSpinner />
             </div>
           ) : (
             <Button
               type="submit"
-              className="h-10 w-full rounded-xl bg-zinc-900 hover:bg-zinc-800"
+              className="h-10 w-full rounded-xl bg-sky-500 text-zinc-950 hover:bg-sky-400"
             >
               Fazer login
             </Button>
           )}
         </div>
       </form>
-      <Link to={"/cadastro"} className="text-zinc-600 m-t-4 block text-center text-sm mt-4">
+      <Link to={"/cadastro"} className="m-t-4 mt-4 block text-center text-sm text-sky-300 hover:text-sky-200">
         Ainda não tem conta ?
       </Link>
     </div>
