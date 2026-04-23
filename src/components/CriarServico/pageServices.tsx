@@ -10,21 +10,21 @@ import { Estagios } from "./estagios/Estagios";
 export function CreateServiceView() {
   return (
     <div className="mx-2 space-y-5 pb-10">
-      <Card className="rounded-2xl border border-white/10 bg-[#1f1f1f] py-4 text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)] md:py-6">
+      <Card className="rounded-2xl border border-[#dedad0] bg-[#fdfcf8] py-4 text-[#1a1a18] shadow-[0_10px_30px_rgba(26,26,24,0.08)] md:py-6">
         <CardContent className="space-y-6">
-          <div className="flex flex-wrap items-center gap-2 text-xs text-white/45">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-[#8a8a82]">
             <span>Minha conta</span>
             <span>›</span>
             <span>Meus servicos</span>
             <span>›</span>
-            <span className="text-white/75">Criar novo servico</span>
+            <span className="text-[#1a1a18]">Criar novo servico</span>
           </div>
 
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-white">
+            <h1 className="text-2xl font-semibold tracking-tight text-[#1a1a18] [font-family:Fraunces,serif]">
               Criar novo servico
             </h1>
-            <p className="mt-1.5 text-sm leading-relaxed text-white/65">
+            <p className="mt-1.5 text-sm leading-relaxed text-[#8a8a82]">
               Preencha as informacoes abaixo para publicar seu servico na
               plataforma.
             </p>
@@ -42,26 +42,26 @@ export function CreateServiceView() {
 
               <Imagem />
 
-              <div className="flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-3 border-t border-[#dedad0] pt-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-wrap gap-2">
                   <Button
                     type="button"
                     variant="outline"
-                    className="rounded-xl border-white/12 bg-transparent text-white/75 hover:bg-white/8 hover:text-white"
+                    className="rounded-xl border-[#dedad0] bg-transparent text-[#4a4a44] hover:bg-[#efece3] hover:text-[#1a1a18]"
                   >
                     Voltar
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
-                    className="rounded-xl border-white/12 bg-[#2a2a2a] text-white/75 hover:bg-[#313131] hover:text-white"
+                    className="rounded-xl border-[#dedad0] bg-[#efece3] text-[#4a4a44] hover:bg-[#e8e4d8] hover:text-[#1a1a18]"
                   >
                     Salvar rascunho
                   </Button>
                 </div>
                 <Button
                   type="button"
-                  className="rounded-xl bg-sky-500 font-semibold text-zinc-950 hover:-translate-y-0.5 hover:bg-sky-400"
+                  className="rounded-xl bg-[#1a1a18] font-semibold text-[#fdfcf8] hover:-translate-y-0.5 hover:bg-[#333333]"
                 >
                   Continuar para revisao
                 </Button>

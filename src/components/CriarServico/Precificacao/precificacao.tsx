@@ -2,12 +2,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const sectionClass = "rounded-2xl border border-white/10 bg-[#1f1f1f] p-6";
+const sectionClass = "rounded-2xl border border-[#dedad0] bg-[#fdfcf8] p-6";
 const fieldClass =
-  "h-10 rounded-xl border-white/12 bg-[#2a2a2a] text-white placeholder:text-white/40 focus-visible:border-sky-400";
+  "h-10 rounded-xl border-[#dedad0] bg-[#efece3] text-[#1a1a18] placeholder:text-[#8a8a82] focus-visible:border-[#1a1a18]";
 
 function SectionTitle({ title }: { title: string }) {
-  return <h2 className="mb-4 text-lg font-semibold text-white">{title}</h2>;
+  return <h2 className="mb-4 text-lg font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">{title}</h2>;
 }
 
 export const Precificacao = () => {
@@ -17,19 +17,19 @@ export const Precificacao = () => {
       <CardContent>
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <Label className="mb-1.5 block text-sm font-medium text-white/80">
+            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
               Valor
             </Label>
-            <div className="flex h-10 overflow-hidden rounded-xl border border-white/12 bg-[#2a2a2a] focus-within:border-sky-400">
-              <span className="inline-flex items-center border-r border-white/12 bg-[#242424] px-3 text-xs font-semibold text-white/45">
+            <div className="flex h-10 overflow-hidden rounded-xl border border-[#dedad0] bg-[#efece3] focus-within:border-[#1a1a18]">
+              <span className="inline-flex items-center border-r border-[#dedad0] bg-[#f5f2eb] px-3 text-xs font-semibold text-[#8a8a82]">
                 R$
               </span>
               <Input
                 type="number"
                 placeholder="0,00"
-                className="h-10 rounded-none border-0 bg-transparent text-white shadow-none focus-visible:ring-0"
+                className="h-10 rounded-none border-0 bg-transparent text-[#1a1a18] shadow-none focus-visible:ring-0"
               />
-              <select className="min-w-24 border-l border-white/12 bg-[#242424] px-2 text-xs text-white/60 outline-none">
+              <select className="min-w-24 border-l border-[#dedad0] bg-[#f5f2eb] px-2 text-xs text-[#4a4a44] outline-none">
                 <option>/ hora</option>
                 <option>/ visita</option>
                 <option>/ m2</option>
@@ -39,10 +39,10 @@ export const Precificacao = () => {
           </div>
 
           <div>
-            <Label className="mb-1.5 block text-sm font-medium text-white/80">
+            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
               Regiao de atendimento
             </Label>
-            <select className="h-10 w-full rounded-xl border border-white/12 bg-[#2a2a2a] px-3 text-sm text-white outline-none focus:border-sky-400">
+            <select className="h-10 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 text-sm text-[#1a1a18] outline-none focus:border-[#1a1a18]">
               <option>Selecione a regiao</option>
               <option>Zona Norte</option>
               <option>Zona Sul</option>
@@ -55,7 +55,7 @@ export const Precificacao = () => {
 
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <div>
-            <Label className="mb-1.5 block text-sm font-medium text-white/80">
+            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
               Tempo estimado
             </Label>
             <Input
@@ -65,7 +65,7 @@ export const Precificacao = () => {
             />
           </div>
           <div>
-            <Label className="mb-1.5 block text-sm font-medium text-white/80">
+            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
               Prazo de garantia
             </Label>
             <Input
@@ -75,10 +75,10 @@ export const Precificacao = () => {
             />
           </div>
           <div>
-            <Label className="mb-1.5 block text-sm font-medium text-white/80">
+            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
               Deslocamento incluso?
             </Label>
-            <select className="h-10 w-full rounded-xl border border-white/12 bg-[#2a2a2a] px-3 text-sm text-white outline-none focus:border-sky-400">
+            <select className="h-10 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 text-sm text-[#1a1a18] outline-none focus:border-[#1a1a18]">
               <option>Sim, gratuito</option>
               <option>Cobrado a parte</option>
               <option>Nao atendo presencial</option>

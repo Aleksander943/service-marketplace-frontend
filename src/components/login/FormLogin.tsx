@@ -41,7 +41,7 @@ export const FormLogin = () => {
     }
   };
   const fieldClass =
-    "h-10 w-full rounded-xl border border-white/12 bg-[#2a2a2a] px-3 text-sm text-white placeholder:text-white/45 outline-none transition focus:border-sky-400";
+    "h-10 w-full rounded-xl border border-[#cecec6] bg-[#e7e7e1] px-3 text-sm text-[#1a1a18] placeholder:text-[#7e7e74] outline-none transition focus:border-[#1a1a18]";
 
   return (
     <div>
@@ -66,20 +66,20 @@ export const FormLogin = () => {
 
           {isSubmitting ? (
             <div
-            className="h-10 w-full rounded-xl bg-sky-500/90">
+            className="h-10 w-full rounded-xl bg-[#2350d4]">
             <BadgeWithSpinner />
             </div>
           ) : (
             <Button
               type="submit"
-              className="h-10 w-full rounded-xl bg-sky-500 text-zinc-950 hover:bg-sky-400"
+              className="h-10 w-full rounded-xl bg-[#1a1a18] text-[#fdfcf8] hover:bg-[#333333]"
             >
               Fazer login
             </Button>
           )}
         </div>
       </form>
-      <Link to={"/cadastro"} className="m-t-4 mt-4 block text-center text-sm text-sky-300 hover:text-sky-200">
+      <Link to={"/cadastro"} className="m-t-4 mt-4 block text-center text-sm text-[#2350d4] hover:text-[#1a1a18]">
         Ainda não tem conta ?
       </Link>
     </div>

@@ -3,7 +3,7 @@ import { CreateServiceView } from "@/components/CriarServico/pageServices";
 
 export function CreateService() {
   return (
-    <div className="min-h-screen bg-[#171717] pb-6">
+    <div className="min-h-screen bg-[#ececea] pb-6">
       <NavBar />
       <CreateServiceView />
     </div>

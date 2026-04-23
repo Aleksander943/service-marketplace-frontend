@@ -1,71 +1,111 @@
 import { servicesData } from "./servicesData"
 
+function Stars({ filled = 5 }: { filled?: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg
+          key={i}
+          viewBox="0 0 24 24"
+          className={["size-[11px]", i < filled ? "fill-[#d4a017]" : "fill-[#e8e4d8]"].join(" ")}
+        >
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  )
+}
+
 export function ServicesBoard() {
   return (
-    <section className="mx-2 rounded-2xl border border-white/10 bg-[#1f1f1f] p-3 text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div>
-          <label className="mb-1 block text-xs font-semibold text-white/70">Ordenar:</label>
-          <select className="h-10 w-full rounded-md border border-white/12 bg-[#2a2a2a] px-3 text-sm font-medium text-white outline-none focus:border-white/30">
-            <option>Menor preço</option>
-            <option>Maior preço</option>
-            <option>Melhor avaliação</option>
-          </select>
+    <section className="px-7 pb-14">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="flex flex-wrap items-center gap-3 border-b border-[#dedad0] bg-[#efece3] px-0 py-2.5">
+          <div className="flex items-center gap-2">
+            <span className="text-[12.5px] text-[#8a8a82]">Ordenar:</span>
+            <select className="h-8 rounded-[5px] border border-[#dedad0] bg-[#fdfcf8] px-2.5 text-[13px] text-[#1a1a18] outline-none focus:border-[#1a1a18]">
+              <option>Menor preço</option>
+              <option>Maior avaliação</option>
+              <option>Mais contratados</option>
+              <option>Mais recentes</option>
+            </select>
+          </div>
+
+          <div className="mx-1 h-4 w-px bg-[#dedad0]" />
+
+          <div className="flex items-center gap-2">
+            <span className="text-[12.5px] text-[#8a8a82]">Região:</span>
+            <select className="h-8 rounded-[5px] border border-[#dedad0] bg-[#fdfcf8] px-2.5 text-[13px] text-[#1a1a18] outline-none focus:border-[#1a1a18]">
+              <option>Zona Norte</option>
+              <option>Zona Sul</option>
+              <option>Zona Leste</option>
+              <option>Zona Oeste</option>
+              <option>Centro</option>
+              <option>Barra da Tijuca</option>
+              <option>Toda a cidade</option>
+            </select>
+          </div>
+
+          <span className="ml-auto text-sm text-[#8a8a82]">5 serviços encontrados</span>
         </div>
 
-        <div>
-          <label className="mb-1 block text-xs font-semibold text-white/70">Região:</label>
-          <select className="h-10 w-full rounded-md border border-white/12 bg-[#2a2a2a] px-3 text-sm font-medium text-white outline-none focus:border-white/30">
-            <option>Zona Norte</option>
-            <option>Zona Sul</option>
-            <option>Zona Oeste</option>
-            <option>Centro</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="mt-3 flex items-center justify-end border-b border-white/10 pb-3 text-sm font-semibold text-white/70">
-        5 serviços encontrados
-      </div>
-
-      <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {servicesData.map((service) => (
-          <article
-            key={service.title}
-            className="overflow-hidden rounded-2xl border border-white/15 bg-[#262626]"
-          >
-            <div className={["flex h-28 items-center justify-center text-4xl", service.cover].join(" ")}>
-              {service.icon}
-            </div>
-
-            <div className="space-y-2 p-3">
-              <div className="text-xs font-bold text-[#6d77ff]">{service.category}</div>
-              <h3 className="text-lg font-semibold leading-tight text-white">{service.title}</h3>
-              <p className="text-xs leading-relaxed text-white/65">{service.description}</p>
-
-              <div className="flex items-center gap-2 text-xs text-white/75">
-                <span className="inline-flex size-5 items-center justify-center rounded-full bg-sky-500/90 text-[10px] font-bold text-white">
-                  {service.providerInitials}
+        <div className="grid grid-cols-1 gap-4 pt-7 md:grid-cols-2 xl:grid-cols-3">
+          {servicesData.map((service, index) => (
+            <article
+              key={service.title}
+              className="overflow-hidden rounded-[10px] border border-[#dedad0] bg-[#fdfcf8] transition hover:translate-x-[-2px] hover:translate-y-[-2px] hover:border-[#1a1a18] hover:shadow-[4px_4px_0_#1a1a18]"
+              style={{ animation: "up .3s ease both", animationDelay: `${0.03 + index * 0.04}s` }}
+            >
+              <div className={["relative flex h-[148px] items-center justify-center overflow-hidden", service.cover].join(" ")}>
+                <div className="pointer-events-none absolute inset-[-10px] bg-[repeating-linear-gradient(-45deg,transparent,transparent_6px,rgba(0,0,0,0.035)_6px,rgba(0,0,0,0.035)_7px)]" />
+                <span className="absolute left-[11px] top-[11px] z-10 rounded-[3px] border border-[#dedad0] bg-[#fdfcf8] px-[9px] py-[3px] text-[10px] font-medium uppercase tracking-[0.6px] text-[#4a4a44]">
+                  {service.category}
                 </span>
-                <span>{service.provider}</span>
-                {service.badge ? (
-                  <span className="rounded-full bg-emerald-200 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
-                    {service.badge}
-                  </span>
-                ) : null}
+                <span className="relative z-[1] text-[52px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)]">{service.icon}</span>
               </div>
 
-              <div className="flex items-end justify-between pt-1">
-                <div className="text-xs font-semibold text-white/80">★★★★★ {service.rating} ({service.reviews})</div>
-                <div className="text-right">
-                  <span className="text-xl font-bold text-white">{service.price}</span>
-                  <span className="text-sm text-white/55">{service.unit}</span>
+              <div className="p-4">
+                <h3 className="mb-1 text-[17px] font-semibold leading-[1.25] tracking-[-0.2px] text-[#1a1a18] [font-family:Fraunces,serif]">
+                  {service.title}
+                </h3>
+
+                <p className="mb-3 line-clamp-2 text-[13px] leading-[1.55] text-[#8a8a82]">{service.description}</p>
+
+                <div className="mb-3 flex items-center gap-2 border-b border-[#dedad0] pb-3">
+                  <span className="flex size-6 items-center justify-center rounded-full border border-[#dedad0] bg-[#e8e4d8] text-[9px] font-semibold text-[#4a4a44] [font-family:Fraunces,serif]">
+                    {service.providerInitials}
+                  </span>
+                  <span className="flex-1 text-[13px] font-medium text-[#4a4a44]">{service.provider}</span>
+                  {service.badge ? (
+                    <span className="rounded-[3px] bg-[#e8f5ee] px-[7px] py-[2px] text-[10.5px] font-medium text-[#1a6e3c]">
+                      {service.badge}
+                    </span>
+                  ) : null}
                 </div>
-              </div>
+
+                <div className="flex items-end justify-between">
+                  <div className="flex flex-col gap-0.5">
+                    <Stars filled={service.starsFilled} />
+                    <span className="text-xs text-[#8a8a82]">
+                      <strong className="font-semibold text-[#1a1a18]">{service.rating}</strong> ({service.reviews} avaliações)
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[22px] leading-none font-bold tracking-[-0.5px] text-[#1a1a18] [font-family:Fraunces,serif]">
+                      {service.price}
+                    </p>
+                    <p className="mt-0.5 text-[11.5px] text-[#8a8a82]">{service.unit}</p>
+                  </div>
+                </div>
             </div>
           </article>
         ))}
+        </div>
       </div>
+
+      <style>
+        {"@keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }"}
+      </style>
     </section>
   )
 }
