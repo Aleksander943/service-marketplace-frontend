@@ -1,9 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-const sectionClass = "rounded-2xl border border-white/10 bg-[#1f1f1f] p-6";
+const sectionClass = "rounded-2xl border border-[#dedad0] bg-[#fdfcf8] p-6";
 
 const SectionTitle = ({ title }: { title: string }) => (
-  <h3 className="mb-4 text-base font-semibold text-white">{title}</h3>
+  <h3 className="mb-4 text-base font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">{title}</h3>
 );
 
 export const Imagem = () => {
@@ -13,16 +13,16 @@ export const Imagem = () => {
       <CardContent>
         <button
           type="button"
-          className="flex w-full flex-col items-center justify-center rounded-xl border border-dashed border-white/20 bg-[#2a2a2a] px-4 py-8 text-center transition hover:border-sky-400/60 hover:bg-sky-500/8"
+          className="flex w-full flex-col items-center justify-center rounded-xl border border-dashed border-[#dedad0] bg-[#efece3] px-4 py-8 text-center transition hover:border-[#2350d4]/60 hover:bg-[#eef1fc]"
         >
           <span className="text-2xl opacity-65">🖼️</span>
-          <p className="mt-2 text-sm text-white/75">
+          <p className="mt-2 text-sm text-[#4a4a44]">
             Arraste fotos aqui ou{" "}
-            <span className="font-semibold text-sky-300">
+            <span className="font-semibold text-[#2350d4]">
               clique para selecionar
             </span>
           </p>
-          <p className="mt-1 text-xs text-white/45">
+          <p className="mt-1 text-xs text-[#8a8a82]">
             JPG, PNG ou WEBP · Max. 5 fotos · 5MB cada
           </p>
         </button>
