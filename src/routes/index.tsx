@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router';
 import { Cadastro } from '../pages/Cadastro';
 import { Login } from '../pages/Login';
 import { Dashboard } from '@/pages/dashboard';
+import { CreateService } from '@/pages/CreateService';
 
 export function AppRoutes() {
 return (
@@ -9,6 +10,7 @@ return (
 <Route path="/" element={<Login/>} />
 <Route path="/cadastro" element={<Cadastro />} />
 <Route path="/dashboard" element={<Dashboard />} />
+<Route path="/servicos/novo" element={<CreateService />} />
 </Routes>
 );
 }
