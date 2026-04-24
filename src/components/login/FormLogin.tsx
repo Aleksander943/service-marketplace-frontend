@@ -5,6 +5,7 @@ import { LoginSchema } from "./schema/FormLoginSchema";
 import { z } from "zod";
 import { Link, useNavigate} from "react-router";
 import { BadgeWithSpinner } from "../Loading/Loading";
+import { loginRequest } from "@/services/auth";
 
 type LoginTypes = z.infer<typeof LoginSchema>;
 
@@ -19,27 +20,25 @@ export const FormLogin = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmitLogin = async (data: LoginTypes) => {
-    try {
-      const res = await fetch("http://localhost:8080/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+const handleSubmitLogin = async (data: LoginTypes) => {
+  try {
+    const { data: response } = await loginRequest(data);
 
-      const resultado = await res.json();
+    const { token } = response;
 
-      if (res.ok) {
-        navigate("/dashboard");
-      } else {
-        alert("Erro no servidor: " + resultado.message);
-      }
-    } catch (error) {
+    localStorage.setItem("token", token);
+
+    navigate("/dashboard");
+
+  } catch (error: any) {
+    if (error.response) {
+      alert(error.response.data.message);
+    } else {
       console.error("Erro de rede:", error);
     }
-  };
+  }
+};
+
   const fieldClass =
     "h-10 w-full rounded-xl border border-[#cecec6] bg-[#e7e7e1] px-3 text-sm text-[#1a1a18] placeholder:text-[#7e7e74] outline-none transition focus:border-[#1a1a18]";
 
