@@ -38,7 +38,7 @@ export const FormCadastro = () => {
 
       if (res.ok) {
         alert("Cadastrado com sucesso");
-        navigate("/login");
+        navigate("/");
       } else {
         alert("Erro no servidor: " + resultado.message);
       }
