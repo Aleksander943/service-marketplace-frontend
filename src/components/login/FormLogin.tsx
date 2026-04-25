@@ -24,9 +24,10 @@ const handleSubmitLogin = async (data: LoginTypes) => {
   try {
     const { data: response } = await loginRequest(data);
 
-    const { token } = response;
+    const { token, name, email, role } = response;
 
     localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify({ name, email, role }));
 
     navigate("/dashboard");
 
