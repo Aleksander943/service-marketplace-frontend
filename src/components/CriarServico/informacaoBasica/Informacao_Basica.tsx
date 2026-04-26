@@ -1,9 +1,13 @@
 import { Card, CardContent } from "../../ui/card"
+import {
+  createServiceCardClass,
+  createServiceCardContentClass,
+} from "../cardStyles"
 
 export const Informacao_basica = () => {
   return (  
-        <Card className="rounded-2xl border border-[#dedad0] bg-[#fdfcf8] py-4 text-[#1a1a18] shadow-[0_10px_30px_rgba(26,26,24,0.08)] md:py-6 ">
-          <CardContent className="space-y-4">
+        <Card className={createServiceCardClass}>
+          <CardContent className={createServiceCardContentClass}>
             <div>
               <div className="mb-1.5 flex items-end justify-between">
                 <label className="text-sm font-medium text-[#4a4a44]">Titulo do servico</label>
