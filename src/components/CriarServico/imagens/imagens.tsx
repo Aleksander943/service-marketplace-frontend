@@ -1,16 +1,19 @@
 import { Card, CardContent } from "@/components/ui/card";
-
-const sectionClass = "rounded-2xl border border-[#dedad0] bg-[#fdfcf8] p-6";
+import {
+  createServiceCardClass,
+  createServiceCardContentClass,
+  createServiceSectionTitleClass,
+} from "../cardStyles";
 
 const SectionTitle = ({ title }: { title: string }) => (
-  <h3 className="mb-4 text-base font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">{title}</h3>
+  <h3 className={createServiceSectionTitleClass}>{title}</h3>
 );
 
 export const Imagem = () => {
   return (
-    <Card className={sectionClass}>
-      <SectionTitle title="Fotos do servico" />
-      <CardContent>
+    <Card className={createServiceCardClass}>
+      <CardContent className={createServiceCardContentClass}>
+        <SectionTitle title="Fotos do servico" />
         <button
           type="button"
           className="flex w-full flex-col items-center justify-center rounded-xl border border-dashed border-[#dedad0] bg-[#efece3] px-4 py-8 text-center transition hover:border-[#2350d4]/60 hover:bg-[#eef1fc]"

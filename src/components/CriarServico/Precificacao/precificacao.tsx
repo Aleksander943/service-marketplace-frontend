@@ -1,20 +1,31 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-const sectionClass = "rounded-2xl border border-[#dedad0] bg-[#fdfcf8] p-6";
-const fieldClass =
-  "h-10 rounded-xl border-[#dedad0] bg-[#efece3] text-[#1a1a18] placeholder:text-[#8a8a82] focus-visible:border-[#1a1a18]";
+import type { Informacao } from "../informacaoBasica/Informacao_Basica";
+import {
+  createServiceCardClass,
+  createServiceCardContentClass,
+  createServiceSectionTitleClass,
+} from "../cardStyles";
 
 function SectionTitle({ title }: { title: string }) {
-  return <h2 className="mb-4 text-lg font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">{title}</h2>;
+  return <h2 className={createServiceSectionTitleClass}>{title}</h2>;
 }
 
-export const Precificacao = () => {
+type Props = {
+  informacao: Informacao;
+  onChange: (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => void;
+};
+
+export const Precificacao = ({ informacao, onChange }: Props) => {
   return (
-    <Card className={sectionClass}>
-      <SectionTitle title="Precificacao" />
-      <CardContent>
+    <Card className={createServiceCardClass}>
+      <CardContent className={createServiceCardContentClass}>
+        <SectionTitle title="Precificacao" />
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
@@ -25,66 +36,42 @@ export const Precificacao = () => {
                 R$
               </span>
               <Input
+                name="valor"
+                value={informacao.valor}
+                onChange={onChange}
                 type="number"
                 placeholder="0,00"
                 className="h-10 rounded-none border-0 bg-transparent text-[#1a1a18] shadow-none focus-visible:ring-0"
               />
-              <select className="min-w-24 border-l border-[#dedad0] bg-[#f5f2eb] px-2 text-xs text-[#4a4a44] outline-none">
-                <option>/ hora</option>
-                <option>/ visita</option>
-                <option>/ m2</option>
-                <option>/ servico</option>
-              </select>
+              <span className="inline-flex items-center border-l border-[#dedad0] bg-[#f5f2eb] px-3 text-xs font-semibold text-[#8a8a82]">
+                BRL
+              </span>
             </div>
           </div>
 
           <div>
             <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
-              Regiao de atendimento
+              Categoria
             </Label>
-            <select className="h-10 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 text-sm text-[#1a1a18] outline-none focus:border-[#1a1a18]">
-              <option>Selecione a regiao</option>
-              <option>Zona Norte</option>
-              <option>Zona Sul</option>
-              <option>Zona Leste</option>
-              <option>Zona Oeste</option>
-              <option>Centro</option>
+            <select
+              name="categoria"
+              value={informacao.categoria}
+              onChange={onChange}
+              className="h-10 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 text-sm text-[#1a1a18] outline-none focus:border-[#1a1a18]"
+            >
+              <option value="">Selecione a categoria</option>
+              <option value="Eletrica">Eletrica</option>
+              <option value="Hidraulica">Hidraulica</option>
+              <option value="Pintura">Pintura</option>
+              <option value="Limpeza">Limpeza</option>
+              <option value="Montagem">Montagem</option>
             </select>
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          <div>
-            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
-              Tempo estimado
-            </Label>
-            <Input
-              type="text"
-              placeholder="Ex: 2 a 4 horas"
-              className={fieldClass}
-            />
-          </div>
-          <div>
-            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
-              Prazo de garantia
-            </Label>
-            <Input
-              type="text"
-              placeholder="Ex: 30 dias"
-              className={fieldClass}
-            />
-          </div>
-          <div>
-            <Label className="mb-1.5 block text-sm font-medium text-[#4a4a44]">
-              Deslocamento incluso?
-            </Label>
-            <select className="h-10 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 text-sm text-[#1a1a18] outline-none focus:border-[#1a1a18]">
-              <option>Sim, gratuito</option>
-              <option>Cobrado a parte</option>
-              <option>Nao atendo presencial</option>
-            </select>
-          </div>
-        </div>
+        <p className="text-xs text-[#8a8a82]">
+          O campo providerId e preenchido automaticamente com o usuario autenticado.
+        </p>
       </CardContent>
     </Card>
   );
