@@ -6,11 +6,12 @@ import { Disponibilidade } from "./disponibilidade/Disponibilidade";
 import { PreVizualicaoo } from "./PreVizualizacao/PreVizualizacao";
 import { Imagem } from "./imagens/imagens";
 import { Estagios } from "./estagios/Estagios";
+import { createServiceCardClass } from "./cardStyles";
 
 export function CreateServiceView() {
   return (
     <div className="mx-2 space-y-5 pb-10">
-      <Card className="rounded-2xl border border-[#dedad0] bg-[#fdfcf8] py-4 text-[#1a1a18] shadow-[0_10px_30px_rgba(26,26,24,0.08)] md:py-6">
+      <Card className={`${createServiceCardClass} py-4 md:py-6`}>
         <CardContent className="space-y-6">
           <div className="flex flex-wrap items-center gap-2 text-xs text-[#8a8a82]">
             <span>Minha conta</span>
