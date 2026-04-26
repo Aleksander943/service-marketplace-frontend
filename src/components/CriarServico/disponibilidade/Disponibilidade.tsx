@@ -2,19 +2,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import {
+  createServiceCardClass,
+  createServiceCardContentClass,
+  createServiceSectionTitleClass,
+} from "../cardStyles";
 
-const sectionClass = "border-[#dedad0] bg-[#fdfcf8] text-[#1a1a18]";
 const fieldClass =
   "h-10 rounded-xl border-[#dedad0] bg-[#efece3] text-[#1a1a18] placeholder:text-[#8a8a82] focus-visible:border-[#1a1a18]";
 const dias = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
 
 export const Disponibilidade = () =>{
     return(
-        <Card className={sectionClass}>
-                <div className="mb-4">
-                  <h3 className="text-base font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">Disponibilidade</h3>
-                </div>
-                <CardContent>
+        <Card className={createServiceCardClass}>
+                <CardContent className={createServiceCardContentClass}>
+                  <h3 className={createServiceSectionTitleClass}>Disponibilidade</h3>
                   <div>
                     <Label className="mb-2 block text-sm font-medium text-[#4a4a44]">Dias da semana</Label>
                     <div className="flex flex-wrap gap-2">
