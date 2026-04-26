@@ -34,7 +34,7 @@ export const PreVizualicaoo = () =>{
 
               <Card className="mt-4 rounded-xl border border-[#dedad0] bg-[#fdfcf8] py-0 text-[#1a1a18]">
                 <CardContent className="pt-4 text-xs leading-relaxed text-[#8a8a82]">
-                  <span className="font-semibold text-[#1a1a18]">Dica:</span> Servicos com foto tem
+                  <span className="font-semibold text-[#1a1a18]">Dica</span> Servicos com foto tem
                   <span className="font-semibold text-[#2350d4]"> 3x mais</span> cliques. Adicione ao menos uma imagem para aumentar suas contratacoes.
                 </CardContent>
               </Card>
