@@ -38,6 +38,7 @@ export function CreateServiceView() {
     };
 
     const { data: response } = await CreateService(payload);
+    navigate("/servicos/revisar")
   } catch (error) {
     console.error("Erro ao criar servico:", error);
   }
@@ -88,7 +89,7 @@ export function CreateServiceView() {
                 <div className="flex flex-wrap gap-2">
                   <Button
                     type="button"
-                    onClick={() => navigate("/dashboard")}
+                    onClick={() => navigate(-1)}
                     variant="outline"
                     className="rounded-xl border-[#dedad0] bg-transparent text-[#4a4a44] hover:bg-[#efece3] hover:text-[#1a1a18]"
                   >
