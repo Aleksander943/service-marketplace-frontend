@@ -8,7 +8,6 @@ type Props = {
 
 export const PreVizualicaoo = ( {informacao}: Props) =>{
 
-  console.log("ao", informacao)
     return (
              <aside className="xl:sticky xl:top-20 xl:self-start">
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a8a82]">

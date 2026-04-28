@@ -7,6 +7,7 @@ import { Estagios } from "./estagios/Estagios";
 import { createServiceCardClass } from "./cardStyles";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { CreateService } from "@/services/sevices";
 
 type Informacao = {
   titulo: string;
@@ -25,10 +26,22 @@ export function CreateServiceView() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(informacao);
-  };
+
+   try {
+    const payload = {
+      title: informacao.titulo,
+      description: informacao.descricao,
+      price: informacao.valor,
+      category: informacao.categoria,
+    };
+
+    const { data: response } = await CreateService(payload);
+  } catch (error) {
+    console.error("Erro ao criar servico:", error);
+  }
+};
 
   const handleChange = (
     e: React.ChangeEvent<
