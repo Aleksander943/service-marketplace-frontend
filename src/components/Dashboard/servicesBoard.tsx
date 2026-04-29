@@ -1,22 +1,22 @@
-import { servicesData } from "./servicesData"
-
-function Stars({ filled = 5 }: { filled?: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          viewBox="0 0 24 24"
-          className={["size-[11px]", i < filled ? "fill-[#d4a017]" : "fill-[#e8e4d8]"].join(" ")}
-        >
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-      ))}
-    </div>
-  )
-}
+import { listService } from "@/services/listServices";
+import { useEffect, useState } from "react";
 
 export function ServicesBoard() {
+  const [services, setServices] = useState<any[]>([]);
+
+  useEffect(() => {
+    const getList = async () => {
+      try {
+        const response = await listService();
+        setServices(response.data ?? []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getList();
+  }, []);
+
   return (
     <section className="px-7 pb-14">
       <div className="mx-auto max-w-[1280px]">
@@ -46,32 +46,49 @@ export function ServicesBoard() {
             </select>
           </div>
 
-          <span className="ml-auto text-sm text-[#8a8a82]">5 serviços encontrados</span>
+          <span className="ml-auto text-sm text-[#8a8a82]">
+            {" "}
+            Serviços encontrados{services.length || 0}
+          </span>
         </div>
 
         <div className="grid grid-cols-1 gap-4 pt-7 md:grid-cols-2 xl:grid-cols-3">
-          {servicesData.map((service, index) => (
+          {services.map((service) => (
             <article
-              key={service.title}
+              key={service.id}
               className="overflow-hidden rounded-[10px] border border-[#dedad0] bg-[#fdfcf8] transition hover:translate-x-[-2px] hover:translate-y-[-2px] hover:border-[#1a1a18] hover:shadow-[4px_4px_0_#1a1a18]"
-              style={{ animation: "up .3s ease both", animationDelay: `${0.03 + index * 0.04}s` }}
             >
-              <div className={["relative flex h-[148px] items-center justify-center overflow-hidden", service.cover].join(" ")}>
+              <div
+                className={[
+                  "relative flex h-[148px] items-center justify-center overflow-hidden",
+                  service.cover,
+                ].join(" ")}
+              >
                 <div className="pointer-events-none absolute inset-[-10px] bg-[repeating-linear-gradient(-45deg,transparent,transparent_6px,rgba(0,0,0,0.035)_6px,rgba(0,0,0,0.035)_7px)]" />
+
                 <span className="absolute left-[11px] top-[11px] z-10 rounded-[3px] border border-[#dedad0] bg-[#fdfcf8] px-[9px] py-[3px] text-[10px] font-medium uppercase tracking-[0.6px] text-[#4a4a44]">
                   {service.category}
                 </span>
-                <span className="relative z-[1] text-[52px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)]">{service.icon}</span>
               </div>
-
               <div className="p-4">
                 <h3 className="mb-1 text-[17px] font-semibold leading-[1.25] tracking-[-0.2px] text-[#1a1a18] [font-family:Fraunces,serif]">
                   {service.title}
                 </h3>
+                <p className="mb-3 line-clamp-2 text-[13px] leading-[1.55] text-[#8a8a82]">
+                  {service.description}
+                </p>
+                <div className="mb-3 flex items-center gap-2 border-b border-[#dedad0] pb-3"></div>
+              </div>
+            </article>
+          ))}
+          {/* {services.map((service) => (
+           
+             
+             
 
-                <p className="mb-3 line-clamp-2 text-[13px] leading-[1.55] text-[#8a8a82]">{service.description}</p>
+                
 
-                <div className="mb-3 flex items-center gap-2 border-b border-[#dedad0] pb-3">
+               
                   <span className="flex size-6 items-center justify-center rounded-full border border-[#dedad0] bg-[#e8e4d8] text-[9px] font-semibold text-[#4a4a44] [font-family:Fraunces,serif]">
                     {service.providerInitials}
                   </span>
@@ -85,7 +102,6 @@ export function ServicesBoard() {
 
                 <div className="flex items-end justify-between">
                   <div className="flex flex-col gap-0.5">
-                    <Stars filled={service.starsFilled} />
                     <span className="text-xs text-[#8a8a82]">
                       <strong className="font-semibold text-[#1a1a18]">{service.rating}</strong> ({service.reviews} avaliações)
                     </span>
@@ -97,15 +113,17 @@ export function ServicesBoard() {
                     <p className="mt-0.5 text-[11.5px] text-[#8a8a82]">{service.unit}</p>
                   </div>
                 </div>
-            </div>
-          </article>
-        ))}
+              </div>
+            </article>
+          ))} */}
         </div>
       </div>
 
       <style>
-        {"@keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }"}
+        {
+          "@keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }"
+        }
       </style>
     </section>
-  )
+  );
 }
