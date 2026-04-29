@@ -37,7 +37,7 @@ export function CreateServiceView() {
       category: informacao.categoria,
     };
 
-    const { data: response } = await CreateService(payload);
+    await CreateService(payload);
     navigate("/servicos/revisar")
   } catch (error) {
     console.error("Erro ao criar servico:", error);
