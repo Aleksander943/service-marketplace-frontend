@@ -7,6 +7,8 @@ import { PrivateRouter } from "./PrivateRoute";
 
 import PublicarServico from "@/pages/PublicarServico";
 import { RevisarService } from "@/pages/RevisarService";
+import { DashboardShowcase } from "@/components/DashboardShowcase/dashboardShowcase";
+import { Perfil } from "@/pages/Pefil";
 
 export function AppRoutes() {
   return (
@@ -18,6 +20,7 @@ export function AppRoutes() {
         <Route path="/servicos/novo" element={<CreateService />} />
         <Route path="/servicos/revisar" element={<RevisarService />} />
         <Route path="/servicos/publicar" element={<PublicarServico />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Route>
     </Routes>
   );
