@@ -60,11 +60,32 @@ export const Precificacao = ({ informacao, onChange }: Props) => {
               className="h-10 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 text-sm text-[#1a1a18] outline-none focus:border-[#1a1a18]"
             >
               <option value="">Selecione a categoria</option>
-              <option value="Eletrica">Eletrica</option>
-              <option value="Hidraulica">Hidraulica</option>
-              <option value="Pintura">Pintura</option>
-              <option value="Limpeza">Limpeza</option>
-              <option value="Montagem">Montagem</option>
+
+              {/* Manutenção e Reformas */}
+              <option value="eletrica">Elétrica</option>
+              <option value="hidraulica">Hidráulica</option>
+              <option value="pintura">Pintura</option>
+              <option value="alvenaria">Alvenaria/Pedreiro</option>
+              <option value="marcenaria">Marcenaria</option>
+              <option value="gesso">Gesso e Drywall</option>
+
+              {/* Serviços Domésticos */}
+              <option value="limpeza">Limpeza/Faxina</option>
+              <option value="passadeira">Passadeira</option>
+              <option value="cozinheira">Cozinheira</option>
+              <option value="jardinagem">Jardinagem</option>
+
+              {/* Montagem e Instalação */}
+              <option value="montagem">Montagem de Móveis</option>
+              <option value="ar-condicionado">Ar Condicionado</option>
+              <option value="seguranca-eletronica">Segurança Eletrônica</option>
+
+              {/* Assistência Técnica */}
+              <option value="informatica">Informática</option>
+              <option value="eletrodomesticos">Eletrodomésticos</option>
+              <option value="celulares">Assistência de Celular</option>
+
+              <option value="outros">Outros Serviços</option>
             </select>
           </div>
         </div>
