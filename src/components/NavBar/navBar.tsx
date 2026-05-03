@@ -11,7 +11,7 @@ export function NavBar() {
 
 
     return (
-        <header className="sticky top-0 z-50">
+        <div className="sticky top-0 z-50">
             <div className="h-[58px] border-b-2 border-[#1a1a18] bg-[#f4f4f1] px-7">
                 <div className="mx-auto flex h-full max-w-[1280px] items-center gap-5">
                     <Link to ="/dashboard" className="shrink-0 text-[22px] leading-none font-bold tracking-[-0.5px] text-[#1a1a18] [font-family:Fraunces,serif]">
@@ -36,8 +36,6 @@ export function NavBar() {
                     </div>
                 </div>
             </div>
-
-            <ServiceFilter />
-        </header>
+        </div>
     );
 }
