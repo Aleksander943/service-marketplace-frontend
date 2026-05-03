@@ -3,8 +3,15 @@ import { useEffect, useState } from "react";
 
 export function ServicesBoard() {
   const [services, setServices] = useState<any[]>([]);
+  const [userName, setUserName] = useState<any>(null);
 
   useEffect(() => {
+    const user= localStorage.getItem("user");
+
+    if(user){
+      setUserName(JSON.parse(user))
+    }
+
     const getList = async () => {
       try {
         const response = await listService();
@@ -16,6 +23,8 @@ export function ServicesBoard() {
 
     getList();
   }, []);
+
+  const inicial = userName?.name?.split("")
 
   return (
     <section className="px-7 pb-14">
@@ -48,7 +57,7 @@ export function ServicesBoard() {
 
           <span className="ml-auto text-sm text-[#8a8a82]">
             {" "}
-            Serviços encontrados{services.length || 0}
+            Serviços encontrados: {services.length ||"0"}
           </span>
         </div>
 
@@ -61,10 +70,9 @@ export function ServicesBoard() {
               <div
                 className={[
                   "relative flex h-[148px] items-center justify-center overflow-hidden",
-                  service.cover,
                 ].join(" ")}
               >
-                <div className="pointer-events-none absolute inset-[-10px] bg-[repeating-linear-gradient(-45deg,transparent,transparent_6px,rgba(0,0,0,0.035)_6px,rgba(0,0,0,0.035)_7px)]" />
+                <div className="pointer-events-none absolute inset-[-10px] bg-gray-400" />
 
                 <span className="absolute left-[11px] top-[11px] z-10 rounded-[3px] border border-[#dedad0] bg-[#fdfcf8] px-[9px] py-[3px] text-[10px] font-medium uppercase tracking-[0.6px] text-[#4a4a44]">
                   {service.category}
@@ -77,45 +85,38 @@ export function ServicesBoard() {
                 <p className="mb-3 line-clamp-2 text-[13px] leading-[1.55] text-[#8a8a82]">
                   {service.description}
                 </p>
-                <div className="mb-3 flex items-center gap-2 border-b border-[#dedad0] pb-3"></div>
-              </div>
-            </article>
-          ))}
-          {/* {services.map((service) => (
-           
-             
-             
-
-                
-
-               
+                <div className="mb-3 flex items-center gap-2 border-b border-[#dedad0] pb-3">
                   <span className="flex size-6 items-center justify-center rounded-full border border-[#dedad0] bg-[#e8e4d8] text-[9px] font-semibold text-[#4a4a44] [font-family:Fraunces,serif]">
-                    {service.providerInitials}
+                    {inicial[0]}
                   </span>
-                  <span className="flex-1 text-[13px] font-medium text-[#4a4a44]">{service.provider}</span>
+                  <span className="flex-1 text-[13px] font-medium text-[#4a4a44]">{userName.name}</span>
                   {service.badge ? (
                     <span className="rounded-[3px] bg-[#e8f5ee] px-[7px] py-[2px] text-[10.5px] font-medium text-[#1a6e3c]">
                       {service.badge}
                     </span>
                   ) : null}
                 </div>
-
                 <div className="flex items-end justify-between">
                   <div className="flex flex-col gap-0.5">
                     <span className="text-xs text-[#8a8a82]">
-                      <strong className="font-semibold text-[#1a1a18]">{service.rating}</strong> ({service.reviews} avaliações)
+                      <strong className="font-semibold text-[#1a1a18]">
+                        {service.rating} 
+                      </strong>{" "}
+                      ({service.reviews} avaliações)
                     </span>
                   </div>
-                  <div className="text-right">
-                    <p className="text-[22px] leading-none font-bold tracking-[-0.5px] text-[#1a1a18] [font-family:Fraunces,serif]">
-                      {service.price}
-                    </p>
-                    <p className="mt-0.5 text-[11.5px] text-[#8a8a82]">{service.unit}</p>
-                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-[22px] leading-none font-bold tracking-[-0.5px] text-[#1a1a18] [font-family:Fraunces,serif]">
+                   R$ {service.price}
+                  </p>
+                  <p className="mt-0.5 text-[11.5px] text-[#8a8a82]">
+                    {service.unit}
+                  </p>
                 </div>
               </div>
             </article>
-          ))} */}
+          ))}
         </div>
       </div>
 
@@ -127,3 +128,5 @@ export function ServicesBoard() {
     </section>
   );
 }
+
+
