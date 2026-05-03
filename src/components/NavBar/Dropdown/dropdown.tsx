@@ -17,6 +17,7 @@ import { useNavigate } from "react-router";
 export function AvatarDropdown() {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
+  const navegate = useNavigate();
   
 useEffect(() => {
   
@@ -55,7 +56,9 @@ useEffect(() => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-50 bg-[#1f1f1f] border border-white/10 text-white">
         <DropdownMenuGroup>
-          <DropdownMenuItem>Perfil</DropdownMenuItem>
+          <DropdownMenuItem
+          onClick={() => navegate("/perfil")}
+          >Perfil</DropdownMenuItem>
           <DropdownMenuItem>Billing</DropdownMenuItem>
           <DropdownMenuItem>Configurações</DropdownMenuItem>
         </DropdownMenuGroup>
