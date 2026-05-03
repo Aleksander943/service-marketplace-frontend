@@ -3,15 +3,9 @@ import { useEffect, useState } from "react";
 
 export function ServicesBoard() {
   const [services, setServices] = useState<any[]>([]);
-  const [userName, setUserName] = useState<any>(null);
+
 
   useEffect(() => {
-    const user= localStorage.getItem("user");
-
-    if(user){
-      setUserName(JSON.parse(user))
-    }
-
     const getList = async () => {
       try {
         const response = await listService();
@@ -23,8 +17,6 @@ export function ServicesBoard() {
 
     getList();
   }, []);
-
-  const inicial = userName?.name?.split("")
 
   return (
     <section className="px-7 pb-14">
@@ -87,9 +79,9 @@ export function ServicesBoard() {
                 </p>
                 <div className="mb-3 flex items-center gap-2 border-b border-[#dedad0] pb-3">
                   <span className="flex size-6 items-center justify-center rounded-full border border-[#dedad0] bg-[#e8e4d8] text-[9px] font-semibold text-[#4a4a44] [font-family:Fraunces,serif]">
-                    {inicial[0]}
+                    {service.provider.name.split("")[0]}
                   </span>
-                  <span className="flex-1 text-[13px] font-medium text-[#4a4a44]">{userName.name}</span>
+                  <span className="flex-1 text-[13px] font-medium text-[#4a4a44]">{service.provider.name}</span>
                   {service.badge ? (
                     <span className="rounded-[3px] bg-[#e8f5ee] px-[7px] py-[2px] text-[10.5px] font-medium text-[#1a6e3c]">
                       {service.badge}
