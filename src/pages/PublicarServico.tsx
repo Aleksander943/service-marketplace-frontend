@@ -140,7 +140,7 @@ export default function PublicarServico() {
               <Button
                 type="button"
                 className="rounded-xl bg-[#1a1a18] font-semibold text-[#fdfcf8] hover:-translate-y-0.5 hover:bg-[#333333]"
-                onClick={() => navigate("/servicos/criar")}
+                onClick={() => navigate("/dashboard")}
               >
                 Criar outro servico
               </Button>
