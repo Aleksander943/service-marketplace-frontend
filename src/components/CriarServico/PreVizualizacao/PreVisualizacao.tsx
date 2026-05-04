@@ -2,11 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { createServiceCardClass } from "../cardStyles";
 
 
-export const PreVizualicaoo = () => {
+export const PreVisualizacao = () => {
   return (
     <div className="xl:sticky xl:top-20 xl:self-start py-20">
       <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a8a82]">
-        Pre-visualizacao do card
+        Pré-visualização do card
       </p>
       <Card className={`${createServiceCardClass} overflow-hidden pb-5`}>
         <div className="flex h-32 items-center justify-center bg-[#faf5d0] text-4xl">
@@ -17,11 +17,10 @@ export const PreVizualicaoo = () => {
             { "Categoria"}
           </p>
           <h3 className="text-base font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">
-            { "Titulo do seu servico"}
+            { "Título do seu serviço"}
           </h3>
           <p className="text-xs leading-relaxed text-[#8a8a82]">
-            {
-              "A descricao aparecera aqui conforme voce preenche o formulario ao lado."}
+            {"A descrição aparecerá aqui conforme você preenche o formulário ao lado."}
           </p>
 
           <div className="flex items-center gap-2 text-xs text-[#4a4a44]">
@@ -41,7 +40,7 @@ export const PreVizualicaoo = () => {
             <span className="text-lg font-bold text-[#1a1a18]">
               R$40
               <span className="text-xs font-normal text-[#8a8a82]">
-                / servico
+                / serviço
               </span>
             </span>
           </div>
