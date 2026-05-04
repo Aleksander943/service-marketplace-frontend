@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
+
 export default function PublicarServico() {
   const navigate = useNavigate();
 
@@ -12,9 +13,9 @@ export default function PublicarServico() {
     <div className="min-h-screen bg-[#ececea] pb-6">
       <NavBar />
 
-      <div className="mx-2 space-y-5 pb-10 pt-3">
-        <Card className={`${createServiceCardClass} py-4 md:py-6`}>
-          <CardContent className="space-y-6">
+      <div className="mx-auto max-w-6xl px-4 space-y-6 pb-12 pt-6">
+        <Card className={`${createServiceCardClass} py-6 md:py-8`}>
+          <CardContent className="space-y-8">
             
 
             <div>
@@ -38,20 +39,20 @@ export default function PublicarServico() {
               </div>
             </div>
 
-            <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_280px]">
-              <div className="space-y-4 md:space-y-10">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+              <div className="space-y-6 md:space-y-10">
                 <section className="rounded-xl border border-[#dedad0] bg-white p-5">
                   <div className="mb-3 border-b border-[#efeadf] pb-3 text-sm font-semibold text-[#1a1a18]">Desempenho do anúncio</div>
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    <div className="rounded-lg bg-[#f8f6f1] p-3.5">
+                  <div className="grid gap-4 sm:grid-cols-3">
+                    <div className="rounded-lg bg-[#f8f6f1] p-4">
                       <div className="text-[11px] uppercase tracking-wider text-[#8a8a82]">Visualizações</div>
                       <div className="mt-1 text-2xl font-semibold text-[#2350d4]">0</div>
                     </div>
-                    <div className="rounded-lg bg-[#f8f6f1] p-3.5">
+                    <div className="rounded-lg bg-[#f8f6f1] p-4">
                       <div className="text-[11px] uppercase tracking-wider text-[#8a8a82]">Contatos recebidos</div>
                       <div className="mt-1 text-2xl font-semibold text-[#1a1a18]">0</div>
                     </div>
-                    <div className="rounded-lg bg-[#f8f6f1] p-3.5">
+                    <div className="rounded-lg bg-[#f8f6f1] p-4">
                       <div className="text-[11px] uppercase tracking-wider text-[#8a8a82]">Receita gerada</div>
                       <div className="mt-1 text-2xl font-semibold text-[#1a6e3c]">R$ 0</div>
                     </div>
@@ -78,15 +79,15 @@ export default function PublicarServico() {
                 </section>
               </div>
 
-              <aside className="space-y-3">
+              <aside className="space-y-4">
                 <div className="rounded-xl border border-[#dedad0] bg-white overflow-hidden">
-                  <div className="relative flex h-[92px] items-center justify-center bg-[#efece3] text-3xl">
+                  <div className="relative flex h-[100px] items-center justify-center bg-[#efece3] text-3xl">
                     ⚡
                     <span className="absolute right-2 top-2 rounded-full bg-[#1a6e3c] px-2 py-1 text-[10px] font-semibold text-white">
                       ao vivo
                     </span>
                   </div>
-                  <div className="space-y-2 p-3.5">
+                  <div className="space-y-3 p-4">
                     <div className="text-[10px] uppercase tracking-wider text-[#8a8a82]">Reformas</div>
                       <div className="text-sm font-semibold text-[#1a1a18]">Instalador de piso porcelanato e vinílico</div>
                       <div className="text-xs leading-relaxed text-[#6a6a62]">Serviço profissional com ferramentas próprias e acabamento impecável...</div>
