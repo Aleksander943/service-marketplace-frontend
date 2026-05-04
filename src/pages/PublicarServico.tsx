@@ -3,7 +3,7 @@ import { createServiceCardClass } from "@/components/CriarServico/cardStyles";
 import { NavBar } from "@/components/NavBar/navBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 
 
