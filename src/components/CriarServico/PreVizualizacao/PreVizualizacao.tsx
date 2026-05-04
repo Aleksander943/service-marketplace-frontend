@@ -1,30 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { createServiceCardClass } from "../cardStyles";
-import type { Informacao } from "../informacaoBasica/Informacao_Basica";
 
-type Props = {
-  informacao: Informacao;
-};
 
-export const PreVizualicaoo = ({ informacao }: Props) => {
+export const PreVizualicaoo = () => {
   return (
-    <div className="xl:sticky xl:top-20 xl:self-start">
+    <div className="xl:sticky xl:top-20 xl:self-start py-20">
       <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a8a82]">
         Pre-visualizacao do card
       </p>
-      <Card className={`${createServiceCardClass} overflow-hidden`}>
+      <Card className={`${createServiceCardClass} overflow-hidden pb-5`}>
         <div className="flex h-32 items-center justify-center bg-[#faf5d0] text-4xl">
           ⚡
         </div>
         <CardContent className="space-y-2 pt-4">
           <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#2350d4]">
-            {informacao.categoria || "Categoria"}
+            { "Categoria"}
           </p>
           <h3 className="text-base font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">
-            {informacao.titulo || "Titulo do seu servico"}
+            { "Titulo do seu servico"}
           </h3>
           <p className="text-xs leading-relaxed text-[#8a8a82]">
-            {informacao.descricao ||
+            {
               "A descricao aparecera aqui conforme voce preenche o formulario ao lado."}
           </p>
 
@@ -43,7 +39,7 @@ export const PreVizualicaoo = ({ informacao }: Props) => {
               ★★★★★ <span className="text-[#8a8a82]">(novo)</span>
             </span>
             <span className="text-lg font-bold text-[#1a1a18]">
-              R${informacao.valor.toFixed(2)}{" "}
+              R$40
               <span className="text-xs font-normal text-[#8a8a82]">
                 / servico
               </span>
