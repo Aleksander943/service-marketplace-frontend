@@ -1,14 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { PreVizualicaoo } from "./PreVizualizacao/PreVizualizacao";
+import { PreVisualizacao } from "./PreVizualizacao/PreVisualizacao";
 import { Estagios } from "./estagios/Estagios";
 import { createServiceCardClass } from "./cardStyles";
 import { FormServices } from "./formCadastro/FormServices";
-import { ButtonFooter } from "./buttonFooter/buttonFotter";
-
 
 export function CreateServiceView() {
   return (
-    <div className="mx-auto max-w-6xl px-4 space-y-6 pb-12 pt-6">
+    <div className="mx-auto max-w-6xl px-4 space-y-6 pt-6">
       <Card className={`${createServiceCardClass} py-6 md:py-8`}>
         <CardContent className="space-y-8">
           <div>
@@ -27,11 +25,11 @@ export function CreateServiceView() {
               <FormServices />
 
               <div className="flex flex-col gap-3 border-t border-[#dedad0] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <ButtonFooter />
+                {/* actions are inside FormServices via ButtonFooter */}
               </div>
             </div>
 
-            <PreVizualicaoo />
+            <PreVisualizacao />
           </div>
         </CardContent>
       </Card>
