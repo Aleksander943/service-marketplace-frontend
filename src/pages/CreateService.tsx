@@ -1,5 +1,5 @@
 import { NavBar } from "@/components/NavBar/navBar";
-import { CreateServiceView } from "@/components/CriarServico/pageServices";
+import { CreateServiceView } from "@/components/CriarServico/CreateServiceView";
 
 export function CreateService() {
   return (
