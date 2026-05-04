@@ -4,10 +4,7 @@ import { Login } from "../pages/Login";
 import { Dashboard } from "@/pages/dashboard";
 import { CreateService } from "@/pages/CreateService";
 import { PrivateRouter } from "./PrivateRoute";
-
 import PublicarServico from "@/pages/PublicarServico";
-import { RevisarService } from "@/pages/RevisarService";
-import { DashboardShowcase } from "@/components/DashboardShowcase/dashboardShowcase";
 import { Perfil } from "@/pages/Pefil";
 
 export function AppRoutes() {
@@ -18,7 +15,6 @@ export function AppRoutes() {
       <Route element={<PrivateRouter />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/servicos/novo" element={<CreateService />} />
-        <Route path="/servicos/revisar" element={<RevisarService />} />
         <Route path="/servicos/publicar" element={<PublicarServico />} />
         <Route path="/perfil" element={<Perfil />} />
       </Route>

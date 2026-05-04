@@ -38,7 +38,7 @@ export function CreateServiceView() {
     };
 
     await CreateService(payload);
-    navigate("/servicos/revisar")
+    navigate("/servicos/publicar")
   } catch (error) {
     console.error("Erro ao criar servico:", error);
   }
@@ -58,7 +58,7 @@ export function CreateServiceView() {
   };
 
   return (
-    <div className="mx-2 space-y-5 pb-10">
+    <div className="mx-2 space-y-5 pb-10 pt-3">
       <Card className={`${createServiceCardClass} py-4 md:py-6`}>
         <CardContent className="space-y-6">
           <div className="flex flex-wrap items-center gap-2 text-xs text-[#8a8a82]">

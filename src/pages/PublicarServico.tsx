@@ -12,16 +12,10 @@ export default function PublicarServico() {
     <div className="min-h-screen bg-[#ececea] pb-6">
       <NavBar />
 
-      <div className="mx-2 space-y-5 pb-10">
+      <div className="mx-2 space-y-5 pb-10 pt-3">
         <Card className={`${createServiceCardClass} py-4 md:py-6`}>
           <CardContent className="space-y-6">
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[#8a8a82]">
-              <span>Minha conta</span>
-              <span>›</span>
-              <span>Meus servicos</span>
-              <span>›</span>
-              <span className="text-[#1a1a18]">Publicar servico</span>
-            </div>
+            
 
             <div>
               <h1 className="text-2xl font-semibold tracking-tight text-[#1a1a18] [font-family:Fraunces,serif]">

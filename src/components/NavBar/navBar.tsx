@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import { ServiceFilter } from "./Filter/serviceFilter";
 import { Search } from "./Search/search";
 import { AvatarDropdown } from "./Dropdown/dropdown";
 

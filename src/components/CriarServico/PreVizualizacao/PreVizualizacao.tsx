@@ -8,7 +8,7 @@ type Props = {
 
 export const PreVizualicaoo = ({ informacao }: Props) => {
   return (
-    <aside className="xl:sticky xl:top-20 xl:self-start">
+    <div className="xl:sticky xl:top-20 xl:self-start">
       <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a8a82]">
         Pre-visualizacao do card
       </p>
@@ -51,6 +51,6 @@ export const PreVizualicaoo = ({ informacao }: Props) => {
           </div>
         </CardContent>
       </Card>
-    </aside>
+    </div>
   );
 };
