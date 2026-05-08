@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { Informacao } from "../informacaoBasica/Informacao_Basica";
+
 import {
   createServiceCardClass,
   createServiceCardContentClass,
@@ -12,16 +12,7 @@ function SectionTitle({ title }: { title: string }) {
   return <h2 className={createServiceSectionTitleClass}>{title}</h2>;
 }
 
-type Props = {
-  informacao: Informacao;
-  onChange: (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => void;
-};
-
-export const Precificacao = ({ informacao, onChange }: Props) => {
+export const Precificacao = () => {
   return (
     <Card className={createServiceCardClass}>
       <CardContent className={createServiceCardContentClass}>
@@ -37,8 +28,6 @@ export const Precificacao = ({ informacao, onChange }: Props) => {
               </span>
               <Input
                 name="valor"
-                value={informacao.valor}
-                onChange={onChange}
                 type="number"
                 placeholder="0,00"
                 className="h-10 rounded-none border-0 bg-transparent text-[#1a1a18] shadow-none focus-visible:ring-0"
@@ -55,8 +44,6 @@ export const Precificacao = ({ informacao, onChange }: Props) => {
             </Label>
             <select
               name="categoria"
-              value={informacao.categoria}
-              onChange={onChange}
               className="h-10 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 text-sm text-[#1a1a18] outline-none focus:border-[#1a1a18]"
             >
               <option value="">Selecione a categoria</option>
