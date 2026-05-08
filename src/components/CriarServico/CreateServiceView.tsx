@@ -2,8 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PreVisualizacao } from "./PreVizualizacao/PreVisualizacao";
 import { Estagios } from "./estagios/Estagios";
 import { createServiceCardClass } from "./cardStyles";
-import { Disponibilidade } from "./disponibilidade/Disponibilidade";
-import { Imagem } from "./imagens/imagens";
 import { FormServices } from "./FormServices/formServices";
 
 export function CreateServiceView() {
@@ -21,14 +19,11 @@ export function CreateServiceView() {
             </p>
           </div>
 
-          <Estagios />
+          <Estagios certo={false} />
 
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div className="space-y-6 md:space-y-8">
               <FormServices/>
-            
-              <Disponibilidade />
-              <Imagem />
 
               <div className="flex flex-col gap-3 border-t border-[#dedad0] pt-5 sm:flex-row sm:items-center sm:justify-between">
                 {/* actions can be added here when integrated with submit flow */}
