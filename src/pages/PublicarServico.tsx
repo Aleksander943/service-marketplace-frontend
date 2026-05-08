@@ -29,7 +29,7 @@ export default function PublicarServico() {
               </p>
             </div>
 
-            <Estagios />
+            <Estagios certo={true} />
 
             <div className="flex items-start gap-3 rounded-xl border border-[#9fd8b7] bg-[#eaf7ef] p-4">
               <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1a6e3c] text-white">
