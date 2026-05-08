@@ -2,34 +2,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PreVisualizacao } from "./PreVizualizacao/PreVisualizacao";
 import { Estagios } from "./estagios/Estagios";
 import { createServiceCardClass } from "./cardStyles";
-import { Informacao_basica } from "./informacaoBasica/Informacao_Basica";
-import { Precificacao } from "./Precificacao/precificacao";
 import { Disponibilidade } from "./disponibilidade/Disponibilidade";
 import { Imagem } from "./imagens/imagens";
-import { useState } from "react";
+import { FormServices } from "./FormServices/formServices";
 
 export function CreateServiceView() {
-  const [informacao, setInformacao] = useState({
-    titulo: "",
-    descricao: "",
-    valor: 0,
-    categoria: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setInformacao((prev) => ({
-      ...prev,
-      [name]: name === "valor" ? Number(value) : value,
-    }));
-  };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 space-y-6 pt-6">
+    <div className="mx-auto max-w px-4 space-y-6 pt-6">
       <Card className={`${createServiceCardClass} py-6 md:py-8`}>
         <CardContent className="space-y-8">
           <div>
@@ -45,8 +25,8 @@ export function CreateServiceView() {
 
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div className="space-y-6 md:space-y-8">
-              <Informacao_basica informacao={informacao} onChange={handleChange} />
-              <Precificacao informacao={informacao} onChange={handleChange} />
+              <FormServices/>
+            
               <Disponibilidade />
               <Imagem />
 
