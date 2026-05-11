@@ -1,8 +1,18 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { createServiceCardClass } from "../cardStyles";
 
+interface Props {
+  campos: [
+    titulo?: string,
+    desricao?: string,
+    valor?: string,
+    categoria?: string,
+  ];
+}
+export const PreVisualizacao = ({ campos }: Props) => {
+  const [titulo, descricao, valor, categoria] = campos;
 
-export const PreVisualizacao = () => {
+  console.log(campos);
   return (
     <div className="xl:sticky xl:top-20 xl:self-start py-20">
       <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a8a82]">
@@ -14,13 +24,14 @@ export const PreVisualizacao = () => {
         </div>
         <CardContent className="space-y-2 pt-4">
           <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#2350d4]">
-            { "Categoria"}
+            {categoria || "Categoria"}
           </p>
           <h3 className="text-base font-semibold text-[#1a1a18] [font-family:Fraunces,serif]">
-            { "Título do seu serviço"}
+            {titulo || "Título do seu serviço"}
           </h3>
           <p className="text-xs leading-relaxed text-[#8a8a82]">
-            {"A descrição aparecerá aqui conforme você preenche o formulário ao lado."}
+            {descricao ||
+              "A descrição aparecerá aqui conforme você preenche o formulário ao lado."}
           </p>
 
           <div className="flex items-center gap-2 text-xs text-[#4a4a44]">
@@ -38,7 +49,7 @@ export const PreVisualizacao = () => {
               ★★★★★ <span className="text-[#8a8a82]">(novo)</span>
             </span>
             <span className="text-lg font-bold text-[#1a1a18]">
-              R$40
+              {valor || "R$40"}
               <span className="text-xs font-normal text-[#8a8a82]">
                 / serviço
               </span>
