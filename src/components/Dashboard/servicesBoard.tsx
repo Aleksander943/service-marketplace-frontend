@@ -1,4 +1,4 @@
-import { listService } from "@/services/listServices";
+import { listService } from "@/services/getListServices";
 import { useEffect, useState } from "react";
 
 export function ServicesBoard() {
