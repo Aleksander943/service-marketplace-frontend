@@ -5,7 +5,7 @@ import {
   createServiceCardContentClass,
 } from "../cardStyles";
 import { Input } from "@/components/ui/input";
-import { CreateService } from "@/services/sevices";
+import { CreateService } from "@/services/postServices";
 import { useNavigate } from "react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CadastroServicesSchema } from "./schema/Data";
