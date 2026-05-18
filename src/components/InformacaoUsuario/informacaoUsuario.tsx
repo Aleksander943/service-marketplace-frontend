@@ -6,9 +6,11 @@ import { PerfilInfo } from "./Cards/perfil";
 import { ResumoPerfil } from "./Cards/resumo";
 import { ServicesUser } from "./Cards/servicos";
 import { HabilidadesUser } from "./Cards/habilidades";
+import { ModalEditor } from "./EditarInfo/editarInfor";
 
 export function InformacaoUsuario() {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const getInfo = async () => {
@@ -42,7 +44,15 @@ export function InformacaoUsuario() {
       <main className="mx-auto grid max-w-7xl gap-6 px-7 py-7 lg:grid-cols-[1.35fr_0.85fr]">
         <Card className="border-[#dedad0] bg-[#fdfcf8] shadow-none">
           <CardContent className="p-6">
+            <div className="flex justify-between">
             <PerfilInfo usuario={usuario} />
+            <button 
+            className="flex items-center justify-center h-8 rounded-md bg-[#1a1a18] px-4 text-[13.5px] font-medium text-[#fdfcf8] transition hover:bg-[#333333] "
+            onClick={() => setIsOpen(true)}
+            >
+              Editar Perfil
+            </button>
+            </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               {[ { value: serviceCount, label: 'Serviços publicados' }, { value: skillCount, label: 'Habilidades' }, { value: `${profileProgress}%`, label: 'Perfil completo' } ].map(({ value, label }) => (
                 <div key={label} className="rounded-xl border border-[#dedad0] bg-[#f4f4f1] p-4">
@@ -93,6 +103,7 @@ export function InformacaoUsuario() {
           </CardContent>
         </Card>
       </main>
+      <ModalEditor isOpen={isOpen} setIsOpen={setIsOpen}  />
     </div>
   )
 }
