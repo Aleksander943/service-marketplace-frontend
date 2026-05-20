@@ -15,7 +15,7 @@ export const ResumoPerfil = ({ usuario }: any) => {
            <button
                 onClick={() => setIsOpen(true)}
               >
-                <Plus className="w-4 h-4"/>
+                <Plus className="w-4 h-4 cursor-pointer"/>
               </button>
         </div>
         <h2 className="mt-2 text-lg font-semibold text-[#1a1a18]">
