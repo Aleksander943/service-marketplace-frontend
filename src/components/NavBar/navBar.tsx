@@ -1,9 +1,9 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Search } from "./Search/search";
 import { AvatarDropdown } from "./Dropdown/dropdown";
 
 export function NavBar() {
-
+    const navigate = useNavigate()
     const user = JSON.parse(localStorage.getItem("user") || "{}");
 
     const anuncio = user.role;
@@ -24,9 +24,12 @@ export function NavBar() {
                     <div className="ml-auto flex items-center gap-3">
 
                         {anuncio ==="PRESTADOR" ? (
-                            <Link to="/servicos/novo" className="flex items-center justify-center h-8 rounded-md bg-[#1a1a18] px-4 text-[13.5px] font-medium text-[#fdfcf8] transition hover:bg-[#333333] ">
+                            <button
+                            onClick={() => navigate("/servicos/novo") }
+                              className="flex items-center justify-center h-8 rounded-md bg-[#1a1a18] px-4 text-[13.5px] font-medium text-[#fdfcf8] transition hover:bg-[#333333] "
+                            >
                                 Publicar serviço
-                            </Link>
+                            </button> 
                         ): (<></>)}
 
                         <div className="flex cursor-pointer items-center gap-2.5">
