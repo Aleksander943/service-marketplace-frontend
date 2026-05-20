@@ -1,10 +1,23 @@
+import { Plus } from "lucide-react";
+import { ModalEditor } from "../EditarInfo/editarInfor";
+import { useState } from "react";
+
 export const ResumoPerfil = ({ usuario }: any) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <div>
       <div>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a8a82]">
-          Resumo
-        </p>
+        <div className="flex justify-between">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a8a82]">
+            Resumo
+          </p>
+           <button
+                onClick={() => setIsOpen(true)}
+              >
+                <Plus className="w-4 h-4"/>
+              </button>
+        </div>
         <h2 className="mt-2 text-lg font-semibold text-[#1a1a18]">
           Informações do prestador
         </h2>
@@ -42,6 +55,7 @@ export const ResumoPerfil = ({ usuario }: any) => {
           </span>
         </div>
       </div>
+         <ModalEditor isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };
