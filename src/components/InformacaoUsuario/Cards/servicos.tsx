@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router";
+
 type services = {
     id: number;
     title: string;
@@ -7,6 +9,8 @@ type services = {
   }
 
 export const ServicesUser = ({ usuario, serviceCount }: any) => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="flex justify-between items-center px-6 py-4 border-b border-[#ebebeb]">
@@ -21,7 +25,10 @@ export const ServicesUser = ({ usuario, serviceCount }: any) => {
           <p className="text-sm text-[#aaa] mt-3">
             Nenhum serviço publicado ainda
           </p>
-          <button className="mt-3 bg-[#1a1a1a] text-white rounded-md px-4 py-2">
+          <button
+          onClick={() => navigate("/servicos/novo")} 
+          className="mt-3 bg-[#1a1a1a] text-white rounded-md px-4 py-2 cursor-pointer"
+          >
             Publicar primeiro serviço
           </button>
         </div>
