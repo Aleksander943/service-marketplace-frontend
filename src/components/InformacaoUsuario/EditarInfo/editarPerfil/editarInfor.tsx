@@ -1,6 +1,5 @@
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -21,27 +20,26 @@ interface Props {
   onSuccess?: () => void;
 }
 
-type EditarInformacao = z.infer<typeof atualizarInfor>
+type EditarInformacao = z.infer<typeof atualizarInfor>;
 
 export const ModalEditor = ({ isOpen, setIsOpen, onSuccess }: Props) => {
   const { register, handleSubmit } = useForm({
-    resolver: zodResolver(atualizarInfor)
+    resolver: zodResolver(atualizarInfor),
   });
 
   const fieldClass =
     "h-12 w-full rounded-xl border border-[#d7d2c8] bg-[#f7f5f0] px-4 text-sm text-[#1a1a18] outline-none transition-all duration-200 placeholder:text-[#8a8a82] focus:border-[#1a1a18] focus:bg-white focus:ring-1 focus:ring-[#1a1a18]/10";
 
-
   const EditarPerfil = async (data: EditarInformacao) => {
-  const payload = {
-  regiao: data.regiao,
-  profissao: data.profissao,
-  bio: data.bio,
-}
+    const payload = {
+      regiao: data.regiao,
+      profissao: data.profissao,
+      bio: data.bio,
+    };
     try {
       await PatchInfoUser(payload);
       onSuccess?.();
-      
+      setIsOpen(false);
       console.log("tudo certo");
     } catch (error) {
       console.log("Ocorreu um erro durante a requisição", error);
