@@ -1,5 +1,5 @@
 import { GetInfoUser } from "@/services/getInfoUser";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Usuario } from "./types/types";
 import { PerfilInfo } from "./Cards/perfil";
@@ -10,18 +10,18 @@ import { HabilidadesUser } from "./Cards/habilidades";
 export function InformacaoUsuario() {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
 
-  useEffect(() => {
-    const getInfo = async () => {
-      try {
-        const response = await GetInfoUser();
-        setUsuario(response?.data ?? null);
-      } catch (error) {
-        console.log("Erro ao carregar as informações do usuário", error);
-      }
-    };
-
-    getInfo();
+  const getInfo = useCallback(async () => {
+    try {
+      const response = await GetInfoUser();
+      setUsuario(response?.data ?? null);
+    } catch (error) {
+      console.log("Erro ao carregar as informações do usuário", error);
+    }
   }, []);
+
+  useEffect(() => {
+    getInfo();
+  }, [getInfo]);
 
   const serviceCount = usuario?.services.length ?? 0;
   const skillCount = usuario?.skills.length ?? 0;
@@ -66,7 +66,7 @@ export function InformacaoUsuario() {
 
         <Card className="border-[#dedad0] bg-[#fdfcf8] shadow-none">
           <CardContent className="space-y-4 p-6">
-            <ResumoPerfil usuario={usuario} />
+              <ResumoPerfil usuario={usuario} onSuccess={getInfo} />
           </CardContent>
         </Card>
 

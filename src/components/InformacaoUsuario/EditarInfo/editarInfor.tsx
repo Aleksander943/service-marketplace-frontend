@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 interface Props {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
+  onSuccess?: () => void;
 }
 
 interface payload {
@@ -21,7 +22,7 @@ interface payload {
   profissao: string;
   bio: string;
 }
-export const ModalEditor = ({ isOpen, setIsOpen }: Props) => {
+export const ModalEditor = ({ isOpen, setIsOpen, onSuccess }: Props) => {
   const { register, handleSubmit } = useForm<payload>();
 
   const fieldClass =
@@ -31,6 +32,8 @@ export const ModalEditor = ({ isOpen, setIsOpen }: Props) => {
   const EditarPerfil = async (data: payload) => {
     try {
       await PatchInfoUser(data);
+      onSuccess?.();
+      setIsOpen(false);
       console.log("tudo certo");
     } catch (error) {
       console.log("Ocorreu um erro durante a requisição", error);
@@ -72,7 +75,7 @@ export const ModalEditor = ({ isOpen, setIsOpen }: Props) => {
           <textarea
             placeholder="Bio"
             {...register("bio")}
-            className={`${fieldClass} min-h-[112px] resize-none py-3`}
+            className={`${fieldClass} min-h-28 resize-none py-3`}
           />
           <AlertDialogFooter className="border-t border-[#eee7dc] px-6 py-3.5 sm:gap-3">
             <AlertDialogCancel className="h-10 rounded-xl border-[#d7d2c8] bg-white text-[#1a1a18] hover:bg-[#f7f5f0] hover:text-[#1a1a18] sm:min-w-28">

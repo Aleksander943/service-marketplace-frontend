@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 import { ModalEditor } from "../EditarInfo/editarInfor";
 import { useState } from "react";
 
-export const ResumoPerfil = ({ usuario }: any) => {
+export const ResumoPerfil = ({ usuario, onSuccess }: any) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -55,7 +55,7 @@ export const ResumoPerfil = ({ usuario }: any) => {
           </span>
         </div>
       </div>
-         <ModalEditor isOpen={isOpen} setIsOpen={setIsOpen} />
+         <ModalEditor isOpen={isOpen} setIsOpen={setIsOpen} onSuccess={onSuccess} />
     </div>
   );
 };
