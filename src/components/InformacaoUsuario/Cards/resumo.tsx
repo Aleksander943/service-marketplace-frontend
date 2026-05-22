@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { ModalEditor } from "../EditarInfo/editarInfor";
+import { ModalEditor } from "../EditarInfo/editarPerfil/editarInfor";
 import { useState } from "react";
 
 export const ResumoPerfil = ({ usuario, onSuccess }: any) => {
