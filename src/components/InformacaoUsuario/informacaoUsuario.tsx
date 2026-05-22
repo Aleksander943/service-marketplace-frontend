@@ -6,6 +6,7 @@ import { PerfilInfo } from "./Cards/perfil";
 import { ResumoPerfil } from "./Cards/resumo";
 import { ServicesUser } from "./Cards/servicos";
 import { HabilidadesUser } from "./Cards/habilidades";
+import { NavBar } from "../NavBar/navBar";
 
 export function InformacaoUsuario() {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
@@ -146,6 +147,7 @@ export function InformacaoUsuario() {
           </CardContent>
         </Card>
       </main>
+      <NavBar progresso={profileProgress} />
     </div>
   );
 }

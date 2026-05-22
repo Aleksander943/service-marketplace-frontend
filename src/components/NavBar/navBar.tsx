@@ -2,13 +2,12 @@ import { Link, useNavigate } from "react-router";
 import { Search } from "./Search/search";
 import { AvatarDropdown } from "./Dropdown/dropdown";
 
-export function NavBar() {
+export function NavBar( ) {
     const navigate = useNavigate()
     const user = JSON.parse(localStorage.getItem("user") || "{}");
 
     const anuncio = user.role;
-
-
+    
     return (
         <div className="sticky top-0 z-50">
             <div className="h-[58px] border-b-2 border-[#1a1a18] bg-[#f4f4f1] px-7">
