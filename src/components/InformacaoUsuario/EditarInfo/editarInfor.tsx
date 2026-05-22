@@ -8,15 +8,34 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { PatchInfoUser } from "@/services/patchInfoUser";
+import { useForm } from "react-hook-form";
 
 interface Props {
   isOpen: boolean;
-  setIsOpen: () => { void: any };
+  setIsOpen: (value: boolean) => void;
 }
 
+interface payload {
+  regiao: string;
+  profissao: string;
+  bio: string;
+}
 export const ModalEditor = ({ isOpen, setIsOpen }: Props) => {
+  const { register, handleSubmit } = useForm<payload>();
+
   const fieldClass =
     "h-12 w-full rounded-xl border border-[#d7d2c8] bg-[#f7f5f0] px-4 text-sm text-[#1a1a18] outline-none transition-all duration-200 placeholder:text-[#8a8a82] focus:border-[#1a1a18] focus:bg-white focus:ring-1 focus:ring-[#1a1a18]/10";
+
+
+  const EditarPerfil = async (data: payload) => {
+    try {
+      await PatchInfoUser(data);
+      console.log("tudo certo");
+    } catch (error) {
+      console.log("Ocorreu um erro durante a requisição", error);
+    }
+  };
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
@@ -32,39 +51,41 @@ export const ModalEditor = ({ isOpen, setIsOpen }: Props) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
 
-        <div className="grid gap-3 px-6 py-5">
-          <input
-            type="text"
-            placeholder="Nome"
-            className={fieldClass}
-          />
-
+        <form
+          onSubmit={handleSubmit(EditarPerfil)}
+          className="grid gap-3 px-6 py-5"
+        >
           <input
             type="text"
             placeholder="Endereço"
+            {...register("regiao")}
             className={fieldClass}
           />
 
           <input
             type="text"
             placeholder="Profissão"
+            {...register("profissao")}
             className={fieldClass}
           />
 
           <textarea
             placeholder="Bio"
+            {...register("bio")}
             className={`${fieldClass} min-h-[112px] resize-none py-3`}
           />
-        </div>
-
-        <AlertDialogFooter className="border-t border-[#eee7dc] px-6 py-3.5 sm:gap-3">
-          <AlertDialogCancel className="h-10 rounded-xl border-[#d7d2c8] bg-white text-[#1a1a18] hover:bg-[#f7f5f0] hover:text-[#1a1a18] sm:min-w-28">
-            Cancelar
-          </AlertDialogCancel>
-          <AlertDialogAction className="h-10 rounded-xl bg-[#1a1a18] text-[#fdfcf8] hover:bg-[#2f2f2d] sm:min-w-28">
-            Salvar
-          </AlertDialogAction>
-        </AlertDialogFooter>
+          <AlertDialogFooter className="border-t border-[#eee7dc] px-6 py-3.5 sm:gap-3">
+            <AlertDialogCancel className="h-10 rounded-xl border-[#d7d2c8] bg-white text-[#1a1a18] hover:bg-[#f7f5f0] hover:text-[#1a1a18] sm:min-w-28">
+              Cancelar
+            </AlertDialogCancel>
+            <AlertDialogAction
+              type="submit"
+              className="h-10 rounded-xl bg-[#1a1a18] text-[#fdfcf8] hover:bg-[#2f2f2d] sm:min-w-28"
+            >
+              Salvar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </form>
       </AlertDialogContent>
     </AlertDialog>
   );
