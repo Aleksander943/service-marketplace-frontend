@@ -1,5 +1,11 @@
 import { api } from "./api";
 
-export const PatchInfoUser = () =>{
-  return api.patch('/perfil')
-};
+interface payload {
+  regiao: string 
+  profissao: string
+  bio: string
+}
+
+export const PatchInfoUser = (data: payload) => {
+  return api.patch('/perfil', data)
+}
