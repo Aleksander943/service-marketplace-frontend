@@ -11,8 +11,6 @@ interface Props {
 }
 export const PreVisualizacao = ({ campos }: Props) => {
   const [titulo, descricao, valor, categoria] = campos;
-
-  console.log(campos);
   return (
     <div className="xl:sticky xl:top-20 xl:self-start py-20">
       <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a8a82]">
