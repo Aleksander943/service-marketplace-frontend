@@ -6,6 +6,7 @@ import { z } from "zod";
 import { Link, useNavigate} from "react-router";
 import { BadgeWithSpinner } from "../Loading/Loading";
 import { loginRequest } from "@/services/auth";
+import { useEffect } from "react";
 
 type LoginTypes = z.infer<typeof LoginSchema>;
 
@@ -24,10 +25,10 @@ const handleSubmitLogin = async (data: LoginTypes) => {
   try {
     const { data: response } = await loginRequest(data);
 
-    const { token, name, email, role } = response;
+    const { token, role } = response;
 
     localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify({ name, email, role }));
+    localStorage.setItem("user", JSON.stringify({ role }));
 
     navigate("/dashboard");
 
