@@ -1,11 +1,12 @@
 import { api } from "./api";
 
-interface payload {
-  regiao: string 
-  profissao: string
-  bio: string
+export interface payload {
+  regiao?: string;
+  profissao?: string;
+  bio?: string;
+  skills?: string[];
 }
 
 export const PatchInfoUser = (data: payload) => {
-  return api.patch('/perfil', data)
-}
+  return api.patch("/perfil", data);
+};

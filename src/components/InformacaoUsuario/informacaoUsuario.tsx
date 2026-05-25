@@ -72,7 +72,11 @@ export function InformacaoUsuario() {
 
         <Card className="border-[#dedad0] bg-[#fdfcf8] shadow-none">
           <CardContent className="p-6">
-            <HabilidadesUser skillCount={skillCount} usuario={usuario} />
+            <HabilidadesUser
+              skillCount={skillCount}
+              usuario={usuario}
+              onSuccess={getInfo}
+            />
           </CardContent>
         </Card>
 

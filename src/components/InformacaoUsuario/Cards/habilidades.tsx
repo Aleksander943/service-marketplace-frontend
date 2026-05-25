@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { AdicionarHabilidade } from "../EditarInfo/adicionarHabilidade/adicionarHabilidade";
 import { Plus } from "lucide-react";
+import type { Usuario } from "../types/types";
 
-export const HabilidadesUser = ({ skillCount, usuario }: any) => {
+interface Props {
+  skillCount: number;
+  usuario: Usuario | null;
+  onSuccess?: () => void;
+}
+
+export const HabilidadesUser = ({ skillCount, usuario, onSuccess }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   type skillsTypes = { id: number; name: string };
@@ -21,11 +28,11 @@ export const HabilidadesUser = ({ skillCount, usuario }: any) => {
 
       {skillCount === 0 ? (
         <>
-          <div className="rounded-xl border border-dashed border-[#dedad0] bg-[#f4f4f1] p-4 text-center text-sm text-[#8a8a82]">
+          <div className="rounded-xl border border-dashed border-[#dedad0] bg-[#f4f4f1] p-4 text-center text-sm text-[#8a8a82] cursor-pointer">
             <div className="text-2xl">🔧</div>
             <div className="mt-2">Nenhuma habilidade cadastrada</div>
           </div>
-          <div className="mt-3 opacity-50 flex flex-wrap gap-2">
+          <div className=" mt-3 opacity-50 flex flex-wrap gap-2 cursor-pointer">
             {["+ Elétrica", "+ Pintura", "+ Limpeza"].map((s) => (
               <span
                 key={s}
@@ -41,14 +48,19 @@ export const HabilidadesUser = ({ skillCount, usuario }: any) => {
           {usuario?.skills.map((skill: skillsTypes) => (
             <span
               key={skill.id}
-              className="text-sm text-[#3c3489] bg-[#eeedfe] px-3 py-1 rounded-full"
+              className="text-sm text-[#3c3489] bg-[#eeedfe] px-3 py-1 rounded-full cursor-pointer"
             >
               {skill.name}
             </span>
           ))}
         </div>
       )}
-      <AdicionarHabilidade isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <AdicionarHabilidade
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        currentSkills={usuario?.skills.map((skill) => skill.name) ?? []}
+        onSuccess={onSuccess}
+      />
     </div>
   );
 };
