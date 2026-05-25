@@ -12,5 +12,5 @@ export const atualizarInfor = z.object({
   bio: z
       .string()
       .min(5, "O título deve ter no mínimo 5 caracteres")
-      .max(60, "O título deve ter no máximo 60 caracteres"),
+      .max(500, "O título deve ter no máximo 500 caracteres"),
 });
