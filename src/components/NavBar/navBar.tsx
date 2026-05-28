@@ -10,22 +10,22 @@ export function NavBar( ) {
     
     return (
         <div className="sticky top-0 z-50">
-            <div className="h-[58px] border-b-2 border-[#1a1a18] bg-[#f4f4f1] px-7">
-                <div className="mx-auto flex h-full max-w-[1280px] items-center gap-5">
-                    <Link to ="/dashboard" className="shrink-0 text-[22px] leading-none font-bold tracking-[-0.5px] text-[#1a1a18] [font-family:Fraunces,serif]">
-                        serviços<span className="italic text-[#2350d4]">já</span>
+            <div className="h-[56px] border-b-[0.5px] border-[rgba(0,0,0,0.12)] bg-white px-[24px]">
+                <div className="mx-auto flex h-full w-full max-w-[1280px] items-center justify-between gap-5">
+                    <Link to ="/dashboard" className="shrink-0 text-[18px] leading-none font-[500] text-[#1a1a1a]">
+                        serviços<span className="font-normal text-[#2563EB]">já</span>
                     </Link>
 
                     <div className="min-w-0 max-w-[500px] flex-1">
                         <Search />
                     </div>
 
-                    <div className="ml-auto flex items-center gap-3">
+                    <div className="ml-auto flex items-center gap-[12px]">
 
                         {anuncio ==="PRESTADOR" ? (
                             <button
                             onClick={() => navigate("/servicos/novo") }
-                              className="flex items-center justify-center h-8 rounded-md bg-[#1a1a18] px-4 text-[13.5px] font-medium text-[#fdfcf8] transition hover:bg-[#333333] "
+                                                            className="cursor-pointer rounded-[8px] border-none bg-[#111] px-[14px] py-[7px] text-[13px] font-normal text-white"
                             >
                                 Publicar serviço
                             </button> 
