@@ -6,6 +6,7 @@ import { CreateService } from "@/pages/CreateService";
 import { PrivateRouter } from "./PrivateRoute";
 import PublicarServico from "@/pages/PublicarServico";
 import { Perfil } from "@/pages/Pefil";
+import ServiceDetail from "@/pages/ServiceDetail";
 
 export function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export function AppRoutes() {
         <Route path="/servicos/novo" element={<CreateService />} />
         <Route path="/servicos/publicar" element={<PublicarServico />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/detalheServicos" element={<ServiceDetail/>}/>
       </Route>
     </Routes>
   );
