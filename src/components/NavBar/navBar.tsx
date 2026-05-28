@@ -25,7 +25,7 @@ export function NavBar( ) {
                         {anuncio ==="PRESTADOR" ? (
                             <button
                             onClick={() => navigate("/servicos/novo") }
-                                                            className="cursor-pointer rounded-[8px] border-none bg-[#111] px-[14px] py-[7px] text-[13px] font-normal text-white"
+                            className="cursor-pointer rounded-[8px] border-none bg-[#111] px-[14px] py-[7px] text-[13px] font-normal text-white"
                             >
                                 Publicar serviço
                             </button> 
