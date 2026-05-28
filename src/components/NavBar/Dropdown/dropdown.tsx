@@ -1,7 +1,5 @@
 "use client";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,19 +41,17 @@ export function AvatarDropdown() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="h-9 gap-2 rounded-full border border-[#cecec6] bg-[#ddddd6] px-3 text-[#4a4a44] shadow-sm transition-colors hover:border-[#bbbbae] hover:bg-[#d5d5cd] hover:text-[#1f1f1a]"
+          <button
+            type="button"
+            className="flex cursor-pointer items-center gap-[8px] rounded-[20px] border-[0.5px] border-[rgba(0,0,0,0.15)] bg-white px-[12px] py-[5px] pl-[6px] text-[13px] font-normal text-[#1a1a1a]"
           >
-            <Avatar className="size-6 border border-[#bfbfb3] bg-[#ecece5]">
-              <AvatarFallback className="bg-transparent text-[11px] font-semibold text-[#4a4a44]">
-                {user?.data?.name?.charAt(0) || "U"}
-              </AvatarFallback>
-            </Avatar>
-            <span className="max-w-[140px] truncate text-[13.5px] font-medium">
+            <div className="flex h-[26px] w-[26px] items-center justify-center rounded-full border-[0.5px] border-[rgba(0,0,0,0.12)] bg-[#f0efeb] text-[11px] font-[500] text-[#666]">
+              {user?.data?.name?.charAt(0) || "U"}
+            </div>
+            <span className="max-w-[140px] truncate text-[13px] font-normal">
               {user?.data?.name || "Minha conta"}
             </span>
-          </Button>
+          </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-50 bg-[#1f1f1f] border border-white/10 text-white">
           <DropdownMenuGroup>
