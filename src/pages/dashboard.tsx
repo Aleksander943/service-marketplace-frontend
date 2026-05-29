@@ -4,10 +4,14 @@ import { ServiceFilter } from "@/components/NavBar/Filter/serviceFilter";
 
 export function Dashboard(){
     return(
-        <div className="min-h-screen bg-[#ececea] pb-6">
+        <div className="min-h-screen bg-[#ececea] pb-8">
             <NavBar/>
-            <ServiceFilter />
-            <ServicesBoard />
+            <main className="w-full px-6">
+                <div className="mt-5">
+                    <ServiceFilter />
+                    <ServicesBoard />
+                </div>
+            </main>
         </div>
     )
 };
