@@ -1,81 +1,36 @@
+import { NavBar } from "@/components/NavBar/navBar";
+import { detalheServices } from "@/services/Api_DetalheServices";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+
 export default function ServiceDetail() {
+  const [infor, setInfor] = useState<string[]>();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const informacao = async () => {
+      const response = await detalheServices(id);
+      setInfor(response)
+    };
+
+    if (id) {
+      informacao();
+    }
+  }, [id]);
+
+ 
+
   return (
     <div
       style={{
         fontFamily: "sans-serif",
         background: "#f0eff0",
         minHeight: "100vh",
-      }}
+      }} 
     >
       {/* Navbar */}
-      <nav
-        style={{
-          background: "#fff",
-          borderBottom: "1px solid #e5e5e5",
-          padding: "0 1.5rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: 56,
-        }}
-      >
-        <span style={{ fontWeight: 700, fontSize: 20 }}>
-          serviços<span style={{ color: "#4f46e5" }}>já</span>
-        </span>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <button
-            style={{
-              background: "#1a1a1a",
-              color: "#fff",
-              border: "none",
-              borderRadius: 8,
-              padding: "8px 16px",
-              fontSize: 13,
-              fontWeight: 500,
-              cursor: "pointer",
-            }}
-          >
-            Publicar serviço
-          </button>
-          <div
-            style={{
-              width: 32,
-              height: 32,
-              borderRadius: "50%",
-              background: "#e5e5e5",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 13,
-              fontWeight: 600,
-              color: "#444",
-            }}
-          >
-            A
-          </div>
-          <span style={{ fontSize: 14, color: "#333" }}>Aleksander</span>
-        </div>
-      </nav>
-
-      {/* Breadcrumb */}
-      <div
-        style={{
-          background: "#fff",
-          borderBottom: "1px solid #e5e5e5",
-          padding: "10px 1.5rem",
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-        }}
-      >
-        <span style={{ fontSize: 13, color: "#999", cursor: "pointer" }}>
-          ← Todos os serviços
-        </span>
-        <span style={{ fontSize: 13, color: "#ccc" }}>›</span>
-        <span style={{ fontSize: 13, color: "#333", fontWeight: 500 }}>
-          Instalação de Piso Porcelanato e Vinilico
-        </span>
-      </div>
+      <NavBar/>
 
       {/* Page body */}
       <div
