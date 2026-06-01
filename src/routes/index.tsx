@@ -18,7 +18,7 @@ export function AppRoutes() {
         <Route path="/servicos/novo" element={<CreateService />} />
         <Route path="/servicos/publicar" element={<PublicarServico />} />
         <Route path="/perfil" element={<Perfil />} />
-        <Route path="/detalheServicos" element={<ServiceDetail/>}/>
+        <Route path="/detalheServicos/:id" element={<ServiceDetail/>}/>
       </Route>
     </Routes>
   );
