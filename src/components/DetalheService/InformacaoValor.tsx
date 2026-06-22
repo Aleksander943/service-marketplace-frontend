@@ -3,13 +3,12 @@ interface Props{
 }
 
 export const InformacaoValor = ({valor}:Props) => {
-  console.log(valor)
   return (
     <div className="bg-white rounded-[12px] border border-[#e0e0e0] p-5">
       <div className="text-center pb-4 border-b border-[#ebebeb] mb-4">
         <p className="text-[12px] text-[#aaa] mb-1">A partir de</p>
         <p className="text-[28px] font-semibold text-[#111]">
-          {valor}
+          R${valor}
           <span className="text-[13px] font-normal text-[#888]">/ m²</span>
         </p>
       </div>
