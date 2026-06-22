@@ -1,47 +1,62 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Card, CardContent } from "../../ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { CreateService } from "@/services/postServices";
+import { PreVisualizacao } from "../PreVizualizacao/PreVisualizacao";
+import { CadastroServicesSchema } from "./schema/Data";
 import {
   createServiceCardClass,
   createServiceCardContentClass,
 } from "../cardStyles";
-import { Input } from "@/components/ui/input";
-import { CreateService } from "@/services/postServices";
-import { useNavigate } from "react-router";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CadastroServicesSchema } from "./schema/Data";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { PreVisualizacao } from "../PreVizualizacao/PreVisualizacao";
 
 type CadastroServicesTypes = z.infer<typeof CadastroServicesSchema>;
 
 export const FormServices = () => {
-  const { register, handleSubmit, watch } = useForm({
+  const navigate = useNavigate();
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const { register, handleSubmit, watch } = useForm<CadastroServicesTypes>({
     resolver: zodResolver(CadastroServicesSchema),
   });
-  const navigate = useNavigate();
+
+  const titulo = watch("titulo") || "";
+  const descricao = watch("descricao") || "";
+  const image = watch("image");
+
+  useEffect(() => {
+    if (image?.[0]) {
+      const url = URL.createObjectURL(image[0]);
+      setPreviewUrl(url);
+      return () => URL.revokeObjectURL(url);
+    }
+    setPreviewUrl(null);
+  }, [image]);
 
   const enviar = async (data: CadastroServicesTypes) => {
     try {
-      const payload = {
-        title: data.titulo,
-        description: data.descricao,
-        price: Number(data.valor),
-        category: data.categoria,
-      };
-      await CreateService(payload);
+      const formData = new FormData();
+      formData.append("title", data.titulo);
+      formData.append("description", data.descricao);
+      formData.append("price", String(data.valor));
+      formData.append("category", data.categoria);
+
+      if (data.image?.[0]) {
+        formData.append("image", data.image[0]);
+      }
+
+      await CreateService(formData);
       navigate("/servicos/publicar");
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error);
     }
   };
 
-  const campos = [
-    watch("titulo"),
-    watch("descricao"),
-    watch("valor"),
-    watch("categoria"),
-  ];
+  const campos = [titulo, descricao, watch("valor"), watch("categoria"), image];
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 justify-space">
@@ -51,33 +66,37 @@ export const FormServices = () => {
             <div>
               <div className="mb-1.5 flex items-end justify-between">
                 <label className="text-sm font-medium text-[#4a4a44]">
-                  Titulo do servico
+                  Título do serviço
                 </label>
-                <span className="text-[11px] text-[#8a8a82]">0 / 60</span>
+                <span className="text-[11px] text-[#8a8a82]">
+                  {titulo.length} / 60
+                </span>
               </div>
               <input
                 id="titulo"
                 {...register("titulo")}
                 type="text"
-                placeholder="Ex: Instalador de piso porcelanato e vinilico"
+                placeholder="Ex: Instalador de piso porcelanato e vinílico"
                 className="min-h-11 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 py-2.5 text-sm text-[#1a1a18] outline-none transition placeholder:text-[#8a8a82] focus:border-[#1a1a18]"
               />
               <p className="mt-1.5 text-xs text-[#8a8a82]">
-                Um titulo claro aumenta suas chances de ser encontrado.
+                Um título claro aumenta suas chances de ser encontrado.
               </p>
             </div>
 
             <div>
               <div className="mb-1.5 flex items-end justify-between">
                 <label className="text-sm font-medium text-[#4a4a44]">
-                  Descricao detalhada
+                  Descrição detalhada
                 </label>
-                <span className="text-[11px] text-[#8a8a82]">0 / 400</span>
+                <span className="text-[11px] text-[#8a8a82]">
+                  {descricao.length} / 400
+                </span>
               </div>
               <textarea
                 id="descricao"
                 {...register("descricao")}
-                placeholder="Descreva o que voce oferece, diferenciais, materiais incluidos e tempo de execucao."
+                placeholder="Descreva o que você oferece, diferenciais, materiais incluídos e tempo de execução."
                 className="min-h-28 w-full rounded-xl border border-[#dedad0] bg-[#efece3] px-3 py-2.5 text-sm text-[#1a1a18] outline-none transition placeholder:text-[#8a8a82] focus:border-[#1a1a18]"
               />
             </div>
@@ -87,7 +106,7 @@ export const FormServices = () => {
         <Card className={createServiceCardClass}>
           <CardContent className={createServiceCardContentClass}>
             <h3 className="mb-4 text-lg font-semibold text-[#1a1a18]">
-              Precificacao
+              Precificação
             </h3>
             <div className="grid gap-4 md:grid-cols-2">
               <div>
@@ -121,47 +140,75 @@ export const FormServices = () => {
                   {...register("categoria")}
                 >
                   <option value="">Selecione a categoria</option>
-
-                  {/* Manutenção e Reformas */}
                   <option value="eletrica">Elétrica</option>
                   <option value="hidraulica">Hidráulica</option>
                   <option value="pintura">Pintura</option>
                   <option value="alvenaria">Alvenaria/Pedreiro</option>
                   <option value="marcenaria">Marcenaria</option>
                   <option value="gesso">Gesso e Drywall</option>
-
-                  {/* Serviços Domésticos */}
                   <option value="limpeza">Limpeza/Faxina</option>
                   <option value="passadeira">Passadeira</option>
                   <option value="cozinheira">Cozinheira</option>
                   <option value="jardinagem">Jardinagem</option>
-
-                  {/* Montagem e Instalação */}
                   <option value="montagem">Montagem de Móveis</option>
                   <option value="ar-condicionado">Ar Condicionado</option>
-                  <option value="seguranca-eletronica">
-                    Segurança Eletrônica
-                  </option>
-
-                  {/* Assistência Técnica */}
+                  <option value="seguranca-eletronica">Segurança Eletrônica</option>
                   <option value="informatica">Informática</option>
                   <option value="eletrodomesticos">Eletrodomésticos</option>
                   <option value="celulares">Assistência de Celular</option>
-
                   <option value="outros">Outros Serviços</option>
                 </select>
               </div>
             </div>
-
-            <p className="text-xs text-[#8a8a82]">
-              O campo providerId e preenchido automaticamente com o usuario
-              autenticado.
+            <p className="mt-4 text-xs text-[#8a8a82]">
+              O campo providerId é preenchido automaticamente com o usuário autenticado.
             </p>
           </CardContent>
         </Card>
 
-        <div className="flex flex-col gap-3  border-[#dedad0] pt-5 sm:flex-row sm:items-center sm:justify-between">
+        <Card className={createServiceCardClass}>
+          <CardContent className={createServiceCardContentClass}>
+            <h1 className="mb-4 text-lg font-semibold text-[#1a1a18]">
+              Fotos do serviço
+            </h1>
+            <input
+              id="image"
+              type="file"
+              accept="image/*"
+              className="hidden"
+              {...register("image")}
+            />
+            <label
+              htmlFor="image"
+              className="flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-[#dedad0] bg-[#efece3] px-4 py-8 text-center transition hover:border-[#2350d4]/60 hover:bg-[#eef1fc]"
+            >
+              <span className="text-2xl opacity-65">🖼️</span>
+              <p className="mt-2 text-sm text-[#4a4a44]">
+                Clique para selecionar uma imagem
+              </p>
+              <p className="mt-1 text-xs text-[#8a8a82]">
+                JPG, PNG ou WEBP · Máj. 5MB
+              </p>
+            </label>
+
+            {previewUrl && (
+              <div className="mt-4">
+                <img
+                  src={previewUrl}
+                  alt="Pré-visualização"
+                  className="h-48 w-full rounded-xl object-cover"
+                />
+                <p className="mt-2 text-sm text-[#4a4a44]">
+                  {image[0].name}
+                </p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <div className="flex flex-col gap-3 border-[#dedad0] pt-5 sm:flex-row sm:items-center sm:justify-between">
           <Button
+            type="button"
             onClick={() => navigate(-1)}
             variant="outline"
             className="rounded-xl border-[#dedad0] bg-transparent text-[#4a4a44] hover:bg-[#efece3] hover:text-[#1a1a18]"
